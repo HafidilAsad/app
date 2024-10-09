@@ -46,7 +46,7 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 className="align-right  rounded-3 d-flex shadow-sm mx-3  "
                 style={{
                 height: 70,
-                width: "20%",
+                // width: "20%",
                 }}
             >
                 <span className="px-3 mt-3 fs-4"><CurrentDate /></span>
