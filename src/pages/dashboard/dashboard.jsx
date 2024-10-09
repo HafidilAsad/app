@@ -4,7 +4,7 @@ import ContentDashboard from '../../components/contentDashboard/ContentDashboard
 
 const Dashboard = () => {
   return (
-    <div style={{fontFamily: "Poppins"}}>
+    <div style={{fontFamily: "monospace"}}>
        <HeaderLayout bgHeader="linear-gradient(135deg, rgba(255,255,255,1) 40%, rgba(62,166,238,1) 100%)" />
        <ContentDashboard />
 

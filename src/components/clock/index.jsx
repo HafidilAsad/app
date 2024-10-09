@@ -14,7 +14,7 @@ function Clock() {
     };
   }, []);
 
-  return <span className="fw-semibold fs-3 my-2 p-2">{date.toLocaleTimeString("fr-FR")}</span>;
+  return <span className="">{date.toLocaleTimeString("fr-FR")}</span>;
 }
 
 export default Clock;
