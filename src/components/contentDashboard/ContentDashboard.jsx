@@ -48,7 +48,7 @@ const Card = ({ header, bodyContent }) => (
 );
 
 const ContentDashboard = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
