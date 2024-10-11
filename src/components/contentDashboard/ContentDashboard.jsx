@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLightbulb, faDoorClosed } from '@fortawesome/free-solid-svg-icons';
 import { motion } from "framer-motion";
 import ThreeDotsWave from '../threeDotsWaves';
+import ChartTemperature from './ChartTemperature';
 
 const doors = ['DOOR 1', 'DOOR 2'];
 const lamps = [
@@ -14,10 +15,10 @@ const switches = [
   { name: 'SWITCH 2', status: 'ON', btnClass: 'btn-success' }
 ];
 const metrics = [
-  { name: 'TEMPERATURE 1', value: '27°C' },
-  { name: 'HUMIDITY 1', value: '273' },
-  { name: 'TEMPERATURE 2', value: '29°C' },
-  { name: 'HUMIDITY 2', value: '271' }
+  { name: 'TEMPERATURE 1', value: '29.0' },
+  { name: 'TEMPERATURE 2', value: '27.3' },
+  { name: 'TEMPERATURE 3', value: '25.5' },
+  { name: 'TEMPERATURE 4', value: '17.1' }
 ];
 
 const kwh = [
@@ -32,23 +33,22 @@ const text = "Control and Monitoring System".split(" ");
 
 const Card = ({ header, bodyContent }) => (
   <motion.div
-    className="card shadow"
+    className="card shadow-sm border-0 rounded-5"
     style={{ cursor: "pointer" }}
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.5 }}
   >
-    <div className="card-header text-center fw-bold fs-4 rounded-3" style={{ borderBottom: "5px solid #bcbcbc" }}>
-      {header}
-    </div>
-    <div className="card-body text-center">
+    
+    <div className="card-body text-center " >
+      <div className="fs-5 fw-bold mb-3 text-muted">{header}</div>
       {bodyContent}
     </div>
   </motion.div>
 );
 
 const ContentDashboard = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -64,8 +64,8 @@ const ContentDashboard = () => {
       ) : (
         <>
               <div className="row my-2 mx-2 me-5">
-                <div className="card shadow-sm mx-2">
-                  <h2 className='ms-4 my-1 p-2'>
+                <div className="card   rounded-3 border-0 shadow-sm mx-2">
+                  <h2 className='ms-4 my-1 p-2 text-muted'>
                   {text.map((el, i) => (
                     <motion.span
                       initial={{ opacity: 0 }}
@@ -90,7 +90,7 @@ const ContentDashboard = () => {
                         <div className="col-lg-6 col-md-6 col-sm-12 mt-3" key={index}>
                           <Card header={door} body="EMERGENCY STATUS" bodyContent={<div className="fs-5 my-1 text-danger fw-bold">
                             <FontAwesomeIcon icon={faDoorClosed} size='2x' />
-                          <br /> Emergency</div>} />
+                          <br /> EMERGENCY</div>} />
                         </div>
                       ))}
                     </div>
@@ -138,7 +138,9 @@ const ContentDashboard = () => {
                 <div className="row">
                     {metrics.map((metric, index) => (
                         <div className="col-lg-3 col-md-6 col-sm-12 mt-3" key={index}>
-                            <Card header={metric.name} body={metric.value} bodyContent={<div className="fw-bold fs-1">{metric.value}</div>} />
+                            <Card header={metric.name} body={metric.value} bodyContent={<div className="fw-bold fs-1">
+                              <ChartTemperature valueTemperature={metric.value}/>
+                            </div>} />
                         </div>
                     ))}
                 </div>
