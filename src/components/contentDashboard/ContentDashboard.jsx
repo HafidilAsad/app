@@ -4,6 +4,7 @@ import { faLightbulb, faDoorClosed } from '@fortawesome/free-solid-svg-icons';
 import { motion } from "framer-motion";
 import ThreeDotsWave from '../threeDotsWaves';
 import ChartTemperature from './ChartTemperature';
+import VideoPlayer from './VideoPlayer';
 
 const doors = ['DOOR 1', 'DOOR 2'];
 const lamps = [
@@ -49,6 +50,7 @@ const Card = ({ header, bodyContent }) => (
 
 const ContentDashboard = () => {
   const [loading, setLoading] = useState(true);
+  const streamUrl = 'rtsp://192.168.1.22:5543/051c6519288cc2d8b07f026902be8c96/live/channel00';
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -56,6 +58,15 @@ const ContentDashboard = () => {
     }, 1000);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  const [iframeSrc, setIframeSrc] = useState("https://motioneye.vete.my.id/picture/1/current/?_=1729003792197");
+
+  useEffect(() => {
+      const interval = setInterval(() => {
+          // Update the iframe source to reload it
+          setIframeSrc(`https://motioneye.vete.my.id/picture/1/current/?_=${Date.now()}`);
+      }, 1000);       
   }, []);
   return (
     <div className='container-fluid'>
@@ -126,10 +137,15 @@ const ContentDashboard = () => {
                     </div>
                   </div>
                   <div className="col-lg-6 col-md-12 col-sm-12">
-                    <div className="row">
-                      <div className="col mt-3">
-                        <Card header="CCTV"  bodyContent={<div className="fs-1 my-3 fw-bold" style={{minHeight:"10.6em"}}>DISPLAY CCTV</div>} />
-                      </div>
+                    <div style={{ transform: 'scale(0.5)', transformOrigin: 'top left', width: '200%', height: '200%' }}>
+                        <iframe 
+                          src={iframeSrc}
+                          title="CCTV" 
+                          width="100%" 
+                          height="100%" 
+                          frameBorder="0" 
+                          style={{ pointerEvents: 'none' }} // Prevents user interactions with iframe
+                        ></iframe>
                     </div>
                   </div>
                 </div>
