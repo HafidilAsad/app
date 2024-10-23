@@ -1,6 +1,6 @@
 import React from 'react'
 import Clock from "../clock";
-import CurrentDate from "../currentDate";
+// import CurrentDate from "../currentDate";
 import logo from "../../assets/stp.png";
 import "./index.css";
 
@@ -31,10 +31,9 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
             <div className="align-center">
                 <div className="  font-header-line  fw-bold ">
                 <div
-                    className=" mt-2  px-5 border-0   "
+                    className=" mt-2 fs-1 px-5 border-0   "
                     style={{
-                    background:
-                        "linear-gradient(135deg, rgba(255,255,255,1) 55%, rgba(62,166,238,1) 100%)",
+                 
                     color: colorTitle,
                     }}
                 >
@@ -49,7 +48,7 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 // width: "20%",
                 }}
             >
-                <span className="px-3 mt-3 fs-4"><CurrentDate /></span>
+                {/* <span className="px-3 mt-3 fs-4"><CurrentDate /></span> */}
                 <span className="px-3 mt-3 fs-4">
                 <Clock />
                 </span>

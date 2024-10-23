@@ -4,7 +4,7 @@ import { faLightbulb, faDoorClosed } from '@fortawesome/free-solid-svg-icons';
 import { motion } from "framer-motion";
 import ThreeDotsWave from '../threeDotsWaves';
 import ChartTemperature from './ChartTemperature';
-import VideoPlayer from './VideoPlayer';
+
 
 const doors = ['DOOR 1', 'DOOR 2'];
 const lamps = [
@@ -30,8 +30,6 @@ const kwh = [
 
 ]
 
-const text = "Control and Monitoring System".split(" ");
-
 const Card = ({ header, bodyContent }) => (
   <motion.div
     className="card shadow-sm border-0 rounded-5"
@@ -49,8 +47,8 @@ const Card = ({ header, bodyContent }) => (
 );
 
 const ContentDashboard = () => {
-  const [loading, setLoading] = useState(true);
-  const streamUrl = 'rtsp://192.168.1.22:5543/051c6519288cc2d8b07f026902be8c96/live/channel00';
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -60,39 +58,12 @@ const ContentDashboard = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const [iframeSrc, setIframeSrc] = useState("https://motioneye.vete.my.id/picture/1/current/?_=1729003792197");
-
-  useEffect(() => {
-      const interval = setInterval(() => {
-          // Update the iframe source to reload it
-          setIframeSrc(`https://motioneye.vete.my.id/picture/1/current/?_=${Date.now()}`);
-      }, 1000);       
-  }, []);
   return (
     <div className='container-fluid'>
        {loading ? (
         <ThreeDotsWave />
       ) : (
         <>
-              <div className="row my-2 mx-2 me-5">
-                <div className="card   rounded-3 border-0 shadow-sm mx-2">
-                  <h2 className='ms-4 my-1 p-2 text-muted'>
-                  {text.map((el, i) => (
-                    <motion.span
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{
-                        duration: 2.55,
-                        delay: i / 10
-                      }}
-                      key={i}
-                    >
-                      {el}{" "}
-                    </motion.span>
-                ))}
-                  </h2>
-                </div>
-              </div>
               <div className="row my-2 mx-2">
                 <div className="row">
                   <div className="col-lg-6 col-md-12 col-sm-12">
@@ -137,16 +108,9 @@ const ContentDashboard = () => {
                     </div>
                   </div>
                   <div className="col-lg-6 col-md-12 col-sm-12">
-                    <div style={{ transform: 'scale(0.5)', transformOrigin: 'top left', width: '200%', height: '200%' }}>
-                        <iframe 
-                          src={iframeSrc}
-                          title="CCTV" 
-                          width="100%" 
-                          height="100%" 
-                          frameBorder="0" 
-                          style={{ pointerEvents: 'none' }} // Prevents user interactions with iframe
-                        ></iframe>
-                    </div>
+                      <div className="col mt-3">
+                        <Card header="CCTV"  bodyContent={<div className="fs-1 my-3 fw-bold" style={{minHeight:"10.6em"}}>DISPLAY CCTV</div>} />
+                      </div>
                   </div>
                 </div>
               </div>
