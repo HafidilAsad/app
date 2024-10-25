@@ -62,7 +62,7 @@ const ContentDashboard = () => {
                           </div>
                       ))}
                   </div>
-                      <div className="card mx-5 text-center my-4 shadow-sm">
+                      <div className="card mx-5 text-center my-4 shadow rounded-5">
                         <h3 className='p-4 '>
                             ENERGY CONSUMPTION : 100W
                         </h3>
@@ -113,7 +113,7 @@ const ContentDashboard = () => {
             <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-2">
               <div className="card shadow rounded-5">
                   <div className="card-body">
-                      <h5>Option :</h5>
+                      <h5>PLC Option :</h5>
                       <div className="row mx-3">
                           {imgOptions.map((option, index) => (
                               <div className="col mt-2" key={index}>
