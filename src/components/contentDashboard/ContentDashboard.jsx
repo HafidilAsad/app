@@ -69,7 +69,7 @@ const ContentDashboard = () => {
     fetchDataStatus();
     setInterval(() => {
       fetchDataStatus();
-    }, 5000);
+    }, 1000);
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
