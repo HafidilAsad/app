@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, ResponsiveContainer, CartesianGrid, XAxis,  Legend , Tooltip} from 'recharts';
+import { BarChart, Bar, ResponsiveContainer, CartesianGrid, XAxis,  Legend , Tooltip, LabelList} from 'recharts';
 
 const ChartKwh = () => {
     const data = [
@@ -17,7 +17,9 @@ const ChartKwh = () => {
             <BarChart data={data}>
                 <CartesianGrid vertical={false} strokeDasharray="4 4" />
                 <XAxis dataKey="name" />
-                <Bar dataKey="kWh" fill="#8884d8" radius={[10, 10, 0, 0]} />
+                <Bar dataKey="kWh" fill="#8884d8" radius={[10, 10, 0, 0]} >
+                    <LabelList dataKey="kWh" position="insideTop" fill="white" />
+                </Bar>
                 <Legend />
                 <Tooltip />
             </BarChart>
