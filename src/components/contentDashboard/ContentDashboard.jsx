@@ -12,7 +12,7 @@ import M241CE40R from "../../assets/M241CE40R.jpg";
 
 
 const ContentDashboard = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
