@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb, faDoorClosed } from '@fortawesome/free-solid-svg-icons';
+import { faLightbulb, faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import ThreeDotsWave from '../threeDotsWaves';
 import CardSensor from './CardSensor';
-import CardDoor from './CardDoor';
 import ChartKwh from './ChartKwh';
 import M221 from "../../assets/M221.jpg";
 import S7 from "../../assets/S7.jpg";
 import CP2E from "../../assets/CP2E.jpg";
 import M241CE40R from "../../assets/M241CE40R.jpg";
 import axios from 'axios';
-import { data } from 'framer-motion/client';
+
 
 
 
@@ -86,6 +85,9 @@ const ContentDashboard = () => {
 ];
 
 let dataEnergy = dataStatus.voltage * dataStatus.arus
+const getLampColor = (button) => {
+  return dataStatus[button] === 1 ? 'green' : 'gray';
+};
   return (
     <div className='container-fluid'>
        {loading ? (
@@ -100,7 +102,7 @@ let dataEnergy = dataStatus.voltage * dataStatus.arus
                     <div className="card-body ">
                     <div className="row mx-5 p-4">
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
-                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x" />
+                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"   style={{ color: getLampColor('button_1') }}/>
                           <div className="form-check fs-3 form-switch my-3 d-flex justify-content-center align-items-center">
                             <input 
                               className="form-check-input" 
@@ -111,7 +113,7 @@ let dataEnergy = dataStatus.voltage * dataStatus.arus
                           </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
-                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x" />
+                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"   style={{ color: getLampColor('button_2') }}/>
                           <div className="form-check fs-3 form-switch my-3 d-flex justify-content-center align-items-center">
                             <input 
                               className="form-check-input" 
@@ -122,7 +124,7 @@ let dataEnergy = dataStatus.voltage * dataStatus.arus
                           </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
-                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x" />
+                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"   style={{ color: getLampColor('button_3') }} />
                           <div className="form-check fs-3 form-switch my-3 d-flex justify-content-center align-items-center">
                             <input 
                               className="form-check-input" 
@@ -133,7 +135,7 @@ let dataEnergy = dataStatus.voltage * dataStatus.arus
                           </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
-                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x" />
+                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"  style={{ color: getLampColor('button_4') }}/>
                           <div className="form-check fs-3 form-switch my-3 d-flex justify-content-center align-items-center">
                             <input 
                               className="form-check-input" 
@@ -201,45 +203,45 @@ let dataEnergy = dataStatus.voltage * dataStatus.arus
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-2">
               <div className='card shadow rounded-5 text-center'>
                 <div className='card-body px-5 py-5 text-center'>
-                  <p className='fs-4'>
-                      Status Door 1
-                  </p>
+                  <p className='fs-4'>Status Door 1</p>
                   <FontAwesomeIcon
-                    icon={faDoorClosed}
+                    icon={dataStatus.button_door_1 === 1 ? faDoorOpen : faDoorClosed}
                     className='me-5'
                     size='6x'
                   />
                   <div className='text-end'>
-                      <div className="form-check form-switch ms-3 my-3 text-end ">
-                          <input className="form-check-input fs-4 ps-3 " 
-                          type="checkbox" 
-                          checked={dataStatus.button_door_1 === 1} 
-                          onChange={(event) => handleButtonDoorChange('button_door_1', event)} />
-                      </div>
+                    <div className="form-check form-switch ms-3 my-3 text-end ">
+                      <input 
+                        className="form-check-input fs-4 ps-3" 
+                        type="checkbox" 
+                        checked={dataStatus.button_door_1 === 1} 
+                        onChange={(event) => handleButtonDoorChange('button_door_1', event)} 
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-2">
               <div className='card shadow rounded-5 text-center'>
-                  <div className='card-body px-5 py-5 text-center'>
-                    <p className='fs-4'>
-                        Status Door 2
-                    </p>
-                    <FontAwesomeIcon
-                      icon={faDoorClosed}
-                      className='me-5'
-                      size='6x'
-                    />
-                    <div className='text-end'>
-                        <div className="form-check form-switch ms-3 my-3 text-end ">
-                            <input className="form-check-input fs-4 ps-3 " 
-                            type="checkbox" 
-                            checked={dataStatus.button_door_2 === 1} 
-                            onChange={(event) => handleButtonDoorChange('button_door_2', event)} />
-                        </div>
+                <div className='card-body px-5 py-5 text-center'>
+                  <p className='fs-4'>Status Door 2</p>
+                  <FontAwesomeIcon
+                    icon={dataStatus.button_door_2 === 1 ? faDoorOpen : faDoorClosed}
+                    className='me-5'
+                    size='6x'
+                  />
+                  <div className='text-end'>
+                    <div className="form-check form-switch ms-3 my-3 text-end ">
+                      <input 
+                        className="form-check-input fs-4 ps-3" 
+                        type="checkbox" 
+                        checked={dataStatus.button_door_2 === 1} 
+                        onChange={(event) => handleButtonDoorChange('button_door_2', event)} 
+                      />
                     </div>
                   </div>
+                </div>
               </div>
             </div>
             <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-2">

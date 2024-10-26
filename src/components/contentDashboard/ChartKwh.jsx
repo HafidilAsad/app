@@ -17,8 +17,8 @@ const ChartKwh = () => {
             <BarChart data={data}>
                 <CartesianGrid vertical={false} strokeDasharray="4 4" />
                 <XAxis dataKey="name" />
-                <Bar dataKey="kWh" fill="#8884d8" radius={[10, 10, 0, 0]} >
-                    <LabelList dataKey="kWh" position="insideTop" fill="white" />
+                <Bar dataKey="kWh" fill="#8884d8" radius={[10, 10, 0, 0]} isAnimationActive={false} >
+                    <LabelList dataKey="kWh" position="insideTop" fill="white"  />
                 </Bar>
                 <Legend />
                 <Tooltip />
