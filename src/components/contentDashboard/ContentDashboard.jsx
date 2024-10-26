@@ -85,7 +85,7 @@ const ContentDashboard = () => {
     { imgSrc: S7, title: "S7 1200 1212" },
 ];
 
-let dataEnergy = dataStatus.kwh * dataStatus.arus
+let dataEnergy = dataStatus.voltage * dataStatus.arus
   return (
     <div className='container-fluid'>
        {loading ? (
