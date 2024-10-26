@@ -13,7 +13,7 @@ const ChartKwh = () => {
     ];
 
     return (
-        <ResponsiveContainer width="100%" height={320}>
+        <ResponsiveContainer width="100%" height={330}>
             <BarChart data={data}>
                 <CartesianGrid vertical={false} strokeDasharray="4 4" />
                 <XAxis dataKey="name" />
