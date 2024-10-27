@@ -8,7 +8,7 @@ const VideoStream = () => {
         const video = videoRef.current;
         const hls = new Hls();
         
-        hls.loadSource('ws://solusiprogrammer.my.id/ws'); // Ganti dengan URL WebSocket yang sesuai
+        hls.loadSource('wss://solusiprogrammer.my.id/ws'); // Ganti dengan URL WebSocket yang sesuai
         hls.attachMedia(video);
         
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
