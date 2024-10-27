@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLightbulb, faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import ThreeDotsWave from '../threeDotsWaves';
@@ -9,9 +9,7 @@ import S7 from "../../assets/S7.jpg";
 import CP2E from "../../assets/CP2E.jpg";
 import M241CE40R from "../../assets/M241CE40R.jpg";
 import axios from 'axios';
-
-
-
+import VideoStream from './VideoStream';
 
 const ContentDashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -27,8 +25,6 @@ const ContentDashboard = () => {
       console.error(error);
     }
   }
-
-  console.log(dataStatus);
   
   const handleButtonChange = async (button, event) => {
     const checked = event.target.checked;
@@ -148,7 +144,7 @@ const getLampColor = (button) => {
                     </div>
                       <div className="card mx-5 text-center my-4 shadow rounded-5">
                         <h3 className='p-4 '>
-                            ENERGY CONSUMPTION : <span className='fw-bold'>{(dataEnergy).toFixed(1)} kWh</span>
+                            ENERGY CONSUMPTION : <span className='fw-bold'>{(dataEnergy).toFixed(1)} watt</span>
                         </h3>
                       </div>
                     </div>
@@ -192,9 +188,9 @@ const getLampColor = (button) => {
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">
               <div className="card shadow h-100 rounded-5">
                 <div className="card-body text-center">
-                  <h5 className="fs-1 fw-bold">
-                    INI CCTV
-                  </h5>
+         
+                {/* <JsmpegPlayer url={websocketUrl} /> */}
+                <VideoStream />
                 </div>
               </div>
             </div>
