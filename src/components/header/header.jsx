@@ -19,19 +19,15 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 <img
                 src={logo}
                 alt=""
-                style={{
-                    width: 200,
-                    height: 90,
-                    borderRadius: "10px",
-                }}
-                className=""
+     
+                className="header-logo"
                 />
               
             </div>
             <div className="align-center">
                 <div className="  font-header-line  fw-bold ">
                 <div
-                    className=" mt-2 fs-1 px-5 border-0   "
+                    className=" mt-2  px-5 border-0   "
                     style={{
                  
                     color: colorTitle,
@@ -49,8 +45,8 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 }}
             >
                 {/* <span className="px-3 mt-3 fs-4"><CurrentDate /></span> */}
-                <span className="px-3 mt-3 fs-4">
-                <Clock />
+                <span className="px-3 mt-3 font-header-line">
+                    <Clock />
                 </span>
             </div>
         </div>

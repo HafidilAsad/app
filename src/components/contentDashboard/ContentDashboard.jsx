@@ -9,10 +9,9 @@ import S7 from "../../assets/S7.jpg";
 import CP2E from "../../assets/CP2E.jpg";
 import M241CE40R from "../../assets/M241CE40R.jpg";
 import axios from 'axios';
-import VideoStream from './VideoStream';
-
+import { motion } from "framer-motion";
 const ContentDashboard = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [dataStatus, setDataStatus] = useState({});
 
 
@@ -84,6 +83,8 @@ let dataEnergy = dataStatus.voltage * dataStatus.arus
 const getLampColor = (button) => {
   return dataStatus[button] === 1 ? 'green' : 'gray';
 };
+
+
   return (
     <div className='container-fluid'>
        {loading ? (
@@ -162,7 +163,7 @@ const getLampColor = (button) => {
                 </div>
               </div>
               <div className="row mt-2">
-              <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">
+                <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">
                   <CardSensor 
                     titleSensor="Current Consumption" 
                     valueSensor={dataStatus.kwh !== undefined ? dataStatus.kwh.toFixed(1) : "N/A"} 
@@ -190,7 +191,8 @@ const getLampColor = (button) => {
                 <div className="card-body text-center">
          
                 {/* <JsmpegPlayer url={websocketUrl} /> */}
-                <VideoStream />
+                {/* <VideoStream /> */}
+                FOR DISPLAYING CCTV
                 </div>
               </div>
             </div>
@@ -245,21 +247,24 @@ const getLampColor = (button) => {
                   <div className="card-body">
                       <h5>PLC Option :</h5>
                       <div className="row mx-3">
-                          {imgOptions.map((option, index) => (
-                              <div className="col mt-2" key={index}>
-                                  <div className="card border-0 d-flex justify-content-center align-items-center">
-                                      <img 
-                                          src={option.imgSrc} 
-                                          width={"50%"} 
-                                          style={{ aspectRatio: "3/3", objectFit: "contain" }} 
-                                          alt={option.title} 
-                                      />
-                                      <div className="card-body">
-                                          <h5 className="card-title text-center">{option.title}</h5>
-                                      </div>
-                                  </div>
-                              </div>
-                          ))}
+                      {imgOptions.map((option, index) => (
+                        <div className="col mt-2" key={index}>
+                            <div className="card border-0 d-flex justify-content-center align-items-center">
+                                <motion.img
+                                    src={option.imgSrc}
+                                    width={"50%"}
+                                    style={{ aspectRatio: "3/3", objectFit: "contain" }}
+                                    alt={option.title}
+                                    initial={{ scale: 1 }}
+                                    whileHover={{ scale: 1.1 }}  // Scale up on hover
+                                    transition={{ type: "spring", stiffness: 300 }} // Add spring animation
+                                />
+                                <div className="card-body">
+                                    <h5 className="card-title text-center">{option.title}</h5>
+                                </div>
+                            </div>
+                        </div>
+                      ))}
                       </div>
                   </div>
               </div>
