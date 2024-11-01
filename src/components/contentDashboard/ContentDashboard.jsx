@@ -10,6 +10,9 @@ import CP2E from "../../assets/CP2E.jpg";
 import M241CE40R from "../../assets/M241CE40R.jpg";
 import axios from 'axios';
 import { motion } from "framer-motion";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+
 const ContentDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [dataStatus, setDataStatus] = useState({});
@@ -37,8 +40,10 @@ const ContentDashboard = () => {
 
     try {
       await axios.post(`https://solusiprogrammer.my.id/api/control/${button}/${newState}`);
+      NotificationManager.success(`Lamp ${button} changed `, 'Success');
     } catch (error) {
       console.error(error);
+      NotificationManager.error('Failed to change status', 'Error');
     }
   };
   
@@ -54,8 +59,10 @@ const ContentDashboard = () => {
 
     try {
       await axios.post(`https://solusiprogrammer.my.id/api/control/${button}/${newState}`);
+      NotificationManager.success('Door changed', 'Success');
     } catch (error) {
       console.error(error);
+      NotificationManager.error('Failed to change Door status', 'Error');
     }
   };
 
@@ -143,7 +150,7 @@ const getLampColor = (button) => {
                           </div>
                         </div>
                     </div>
-                      <div className="card mx-5 text-center my-4 shadow rounded-5">
+                      <div className="card mx-5 text-center my-2 shadow rounded-5">
                         <h3 className='p-4 '>
                             ENERGY CONSUMPTION : <span className='fw-bold'>{(dataEnergy).toFixed(1)} watt</span>
                         </h3>
@@ -200,7 +207,7 @@ const getLampColor = (button) => {
           <div className="row m-2 mt-2">
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-2">
               <div className='card shadow rounded-5 text-center'>
-                <div className='card-body px-5 py-5 text-center'>
+                <div className='card-body px-5 py-3 text-center'>
                   <p className='fs-4'>Status Door 1</p>
                   <FontAwesomeIcon
                     icon={dataStatus.button_door_1 === 1 ? faDoorOpen : faDoorClosed}
@@ -222,7 +229,7 @@ const getLampColor = (button) => {
             </div>
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-2">
               <div className='card shadow rounded-5 text-center'>
-                <div className='card-body px-5 py-5 text-center'>
+                <div className='card-body px-5 py-3 text-center'>
                   <p className='fs-4'>Status Door 2</p>
                   <FontAwesomeIcon
                     icon={dataStatus.button_door_2 === 1 ? faDoorOpen : faDoorClosed}
@@ -270,6 +277,7 @@ const getLampColor = (button) => {
               </div>
             </div>
           </div>
+          <NotificationContainer/>
         </>
       )}
    

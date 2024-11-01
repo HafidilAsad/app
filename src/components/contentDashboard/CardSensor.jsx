@@ -14,7 +14,7 @@ const CardSensor = ({ titleSensor, valueSensor, satuanSensor }) => {
             style={{ borderBottom: 'none' }} // Ensure no border is shown initially
         >
             <div className="card-body px-5 py-3">
-                <div className="card-title fs-4 mt-5">
+                <div className="card-title fs-4 mt-1">
                     {titleSensor}
                 </div>
                 <div className="fw-bold" style={{ fontSize: "3em" }}>

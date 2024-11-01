@@ -21,7 +21,7 @@ const Login = () => {
       justifyContent: "center",
       alignItems: "center"
     }}>
-      <div className="card shadow-sm border-0 rounded-3 w-25">
+      <div className="card shadow-sm border-0 rounded-4 w-25">
         <div className="card-body">
           <h2 className="card-title text-center mb-5">Login</h2>
           <form onSubmit={handleLogin}>
