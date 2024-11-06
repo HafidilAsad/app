@@ -71,7 +71,7 @@ const ContentDashboard = () => {
     fetchDataStatus();
     setInterval(() => {
       fetchDataStatus();
-    }, 1000);
+    }, 3000);
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -199,7 +199,16 @@ const getLampColor = (button) => {
          
                 {/* <JsmpegPlayer url={websocketUrl} /> */}
                 {/* <VideoStream /> */}
-                FOR DISPLAYING CCTV
+                <h1 className='mb-5 fw-semibold text-muted'>Display CCTV</h1>
+               <iframe 
+                  src={"https://cctv.solusiprogrammer.my.id/picture/1/frame/"}
+                  width="100%"
+                  height="70%"
+                  frameBorder="0"
+                  allowFullScreen
+               
+                
+                />
                 </div>
               </div>
             </div>
@@ -255,18 +264,18 @@ const getLampColor = (button) => {
                       <h5>PLC Option :</h5>
                       <div className="row mx-3">
                       {imgOptions.map((option, index) => (
-                        <div className="col mt-2" key={index}>
+                        <div className="col mt-1" key={index}>
                             <div className="card border-0 d-flex justify-content-center align-items-center">
                                 <motion.img
                                     src={option.imgSrc}
-                                    width={"50%"}
+                                    width={"40%"}
                                     style={{ aspectRatio: "3/3", objectFit: "contain" }}
                                     alt={option.title}
                                     initial={{ scale: 1 }}
                                     whileHover={{ scale: 1.1 }}  // Scale up on hover
                                     transition={{ type: "spring", stiffness: 300 }} // Add spring animation
                                 />
-                                <div className="card-body">
+                                <div className="card-body m-0 ">
                                     <h5 className="card-title text-center">{option.title}</h5>
                                 </div>
                             </div>
