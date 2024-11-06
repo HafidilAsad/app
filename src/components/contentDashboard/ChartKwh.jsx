@@ -20,7 +20,12 @@ const ChartKwh = () => {
         <ResponsiveContainer width="100%" height={305}>
             <BarChart data={data}>
                 <CartesianGrid vertical={false} strokeDasharray="4 4" />
-                <XAxis dataKey="name" />
+                <XAxis 
+                    dataKey="name" 
+                    angle={20} 
+                    textAnchor="start" 
+                    interval={0} // Ensures that all labels are displayed
+                />
                 <Bar dataKey="kWh" fill="#8884d8" radius={[5, 5, 0, 0]} isAnimationActive={false} >
                     <LabelList dataKey="kWh" position="insideTop" fill="white"  />
                 </Bar>

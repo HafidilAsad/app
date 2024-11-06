@@ -152,7 +152,7 @@ const getLampColor = (button) => {
                     </div>
                       <div className="card mx-5 text-center my-2 shadow rounded-5">
                         <h3 className='p-4 '>
-                            ENERGY CONSUMPTION : <span className='fw-bold'>{(dataEnergy).toFixed(1)} watt</span>
+                            POWER CONSUMPTION : <span className='fw-bold'>{(dataEnergy).toFixed(1)} watt</span>
                         </h3>
                       </div>
                     </div>
@@ -172,7 +172,7 @@ const getLampColor = (button) => {
               <div className="row mt-2">
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">
                   <CardSensor 
-                    titleSensor="Current Consumption" 
+                    titleSensor="kWh" 
                     valueSensor={dataStatus.kwh !== undefined ? dataStatus.kwh.toFixed(1) : "N/A"} 
                     satuanSensor="kWh" 
                   />
