@@ -9,7 +9,7 @@ import Login from "./pages/login/login";
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter  basename="/demo">
         <Routes>
         
           <Route path="/dashboard" element={<Dashboard />} />
