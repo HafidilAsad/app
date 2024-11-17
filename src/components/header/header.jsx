@@ -3,6 +3,7 @@ import Clock from "../clock";
 // import CurrentDate from "../currentDate";
 import logo from "../../assets/logo.png";
 import "./index.css";
+import { Link } from 'react-router-dom';
 
 const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
   return (
@@ -15,7 +16,7 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
         }}
     >
         <div className=" d-flex justify-content-between align-items-center mb-1">
-            <div className="align-left  ">
+            <Link className="align-left  " to="https://solusiprogrammer.my.id/">
                 <img
                 src={logo}
                 alt=""
@@ -23,7 +24,7 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 className="header-logo"
                 />
               
-            </div>
+            </Link>
             <div className="align-center">
                 <div className="  font-header-line  fw-bold ">
                 <div
