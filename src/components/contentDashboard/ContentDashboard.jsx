@@ -174,7 +174,7 @@ const getLampColor = (button) => {
                   <CardSensor 
                     titleSensor="kWh" 
                     valueSensor={dataStatus.kwh !== undefined ? dataStatus.kwh.toFixed(1) : "N/A"} 
-                    satuanSensor="kWh" 
+                    satuanSensor="Wh" 
                   />
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">

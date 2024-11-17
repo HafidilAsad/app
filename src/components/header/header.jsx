@@ -1,7 +1,7 @@
 import React from 'react'
 import Clock from "../clock";
 // import CurrentDate from "../currentDate";
-import logo from "../../assets/stp.png";
+import logo from "../../assets/logo.png";
 import "./index.css";
 
 const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
