@@ -88,7 +88,30 @@ const ContentDashboard = () => {
 
 let dataEnergy = dataStatus.voltage * dataStatus.arus
 const getLampColor = (button) => {
-  return dataStatus[button] === 1 ? 'green' : 'gray';
+  switch (button) {
+    case 'button_1':
+      return dataStatus[button] === 1 ? '#32a852' : '#808080'; 
+    case 'button_2':
+      return dataStatus[button] === 1 ? '#FFA500' : '#808080'; 
+    case 'button_3':
+      return dataStatus[button] === 1 ? '#d3d329' : '#808080';
+    case 'button_4':
+      return dataStatus[button] === 1 ? '#0000FF' : '#808080'; 
+    default:
+      return '#808080'; 
+  }
+};
+
+const getLampStyle = (button) => {
+  if (dataStatus[button] === 1) {
+    const lampColor = getLampColor(button);
+    return {
+      color: lampColor,
+      filter: `drop-shadow(0 0 15px ${lampColor}) drop-shadow(0 0 30px ${lampColor})`,
+    };
+  } else {
+    return { color: getLampColor(button) }; // No shadow when off
+  }
 };
 
 
@@ -99,14 +122,14 @@ const getLampColor = (button) => {
       ) : (
         <>
           <div className="row m-2 mt-2">
-            <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">
               <div className="row">
-                <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-2">
+                <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 mt-2">
                   <div className="card shadow rounded-5">
                     <div className="card-body ">
                     <div className="row mx-5 p-4">
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
-                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"   style={{ color: getLampColor('button_1') }}/>
+                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"         style={getLampStyle('button_1')}/>
                           <div className="form-check fs-3 form-switch my-3 d-flex justify-content-center align-items-center">
                             <input 
                               className="form-check-input" 
@@ -117,7 +140,7 @@ const getLampColor = (button) => {
                           </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
-                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"   style={{ color: getLampColor('button_2') }}/>
+                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"  style={getLampStyle('button_2')}  />
                           <div className="form-check fs-3 form-switch my-3 d-flex justify-content-center align-items-center">
                             <input 
                               className="form-check-input" 
@@ -128,7 +151,7 @@ const getLampColor = (button) => {
                           </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
-                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"   style={{ color: getLampColor('button_3') }} />
+                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"    style={getLampStyle('button_3')} />
                           <div className="form-check fs-3 form-switch my-3 d-flex justify-content-center align-items-center">
                             <input 
                               className="form-check-input" 
@@ -139,7 +162,7 @@ const getLampColor = (button) => {
                           </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
-                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"  style={{ color: getLampColor('button_4') }}/>
+                          <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"  style={getLampStyle('button_4')}/>
                           <div className="form-check fs-3 form-switch my-3 d-flex justify-content-center align-items-center">
                             <input 
                               className="form-check-input" 
@@ -158,7 +181,7 @@ const getLampColor = (button) => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">
+                <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-2">
                   <div className="card shadow rounded-5">
                     <div className="card-body">
                       <div className="card-title">
@@ -193,7 +216,7 @@ const getLampColor = (button) => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">
+            <div className="col-lg-4 col-md-8 col-sm-12 col-xs-12 mt-2">
               <div className="card shadow h-100 rounded-5">
                 <div className="card-body text-center">
          
