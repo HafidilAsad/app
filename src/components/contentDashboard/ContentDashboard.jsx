@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb, faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { faLightbulb, faDoorClosed, faDoorOpen, faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
 import ThreeDotsWave from '../threeDotsWaves';
 import CardSensor from './CardSensor';
 import ChartKwh from './ChartKwh';
@@ -262,11 +262,17 @@ const getLampStyle = (button) => {
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-2">
               <div className='card shadow rounded-5 text-center'>
                 <div className='card-body px-5 py-3 text-center'>
-                  <p className='fs-4'>Status Door 2</p>
+                  <p className='fs-4'>TL LAMP</p>
                   <FontAwesomeIcon
-                    icon={dataStatus.button_door_2 === 1 ? faDoorOpen : faDoorClosed}
+                    icon={faBarsStaggered}
                     className='me-5'
                     size='6x'
+                    style={{
+                      color: dataStatus.button_door_2 === 1 ? 'yellow' : 'black',
+                      filter: dataStatus.button_door_2 === 1
+                        ? 'drop-shadow(0 0 15px gold) drop-shadow(0 0 30px gold)'
+                        : 'none',
+                    }}
                   />
                   <div className='text-end'>
                     <div className="form-check form-switch ms-3 my-3 text-end ">
