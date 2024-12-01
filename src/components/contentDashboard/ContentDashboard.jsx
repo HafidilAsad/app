@@ -125,7 +125,7 @@ const getLampStyle = (button) => {
             <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">
               <div className="row">
                 <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 mt-2">
-                  <div className="card shadow rounded-5">
+                  <div className="card shadow rounded-5 border-3 border-info">
                     <div className="card-body ">
                     <div className="row mx-5 p-4">
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
@@ -182,7 +182,7 @@ const getLampStyle = (button) => {
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12 mt-2">
-                  <div className="card shadow rounded-5">
+                  <div className="card shadow rounded-5  border-3 border-info">
                     <div className="card-body">
                       <div className="card-title">
                         Power Consumtion <span className='text-muted'>kWh</span>
@@ -217,7 +217,7 @@ const getLampStyle = (button) => {
               </div>
             </div>
             <div className="col-lg-4 col-md-8 col-sm-12 col-xs-12 mt-2">
-              <div className="card shadow h-100 rounded-5">
+              <div className="card shadow h-100 rounded-5  border-3 border-info">
                 <div className="card-body text-center">
          
                 {/* <JsmpegPlayer url={websocketUrl} /> */}
@@ -238,7 +238,7 @@ const getLampStyle = (button) => {
           </div>
           <div className="row m-2 mt-2">
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-2">
-              <div className='card shadow rounded-5 text-center'>
+              <div className='card shadow rounded-5 text-center  border-3 border-info'>
                 <div className='card-body px-5 py-3 text-center'>
                   <p className='fs-4'>Status Door 1</p>
                   <FontAwesomeIcon
@@ -260,7 +260,7 @@ const getLampStyle = (button) => {
               </div>
             </div>
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-2">
-              <div className='card shadow rounded-5 text-center'>
+              <div className='card shadow rounded-5 text-center  border-3 border-info'>
                 <div className='card-body px-5 py-3 text-center'>
                   <p className='fs-4'>TL LAMP</p>
                   <FontAwesomeIcon
@@ -288,7 +288,7 @@ const getLampStyle = (button) => {
               </div>
             </div>
             <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-2">
-              <div className="card shadow rounded-5">
+              <div className="card shadow rounded-5 border-3 border-info">
                   <div className="card-body">
                       <h5>PLC Option :</h5>
                       <div className="row mx-3">

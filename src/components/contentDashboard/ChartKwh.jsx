@@ -26,7 +26,7 @@ const ChartKwh = () => {
                     textAnchor="start" 
                     interval={0} // Ensures that all labels are displayed
                 />
-                <Bar dataKey="kWh" fill="#8884d8" radius={[5, 5, 0, 0]} isAnimationActive={false} >
+                <Bar dataKey="kWh" fill="gold" radius={[5, 5, 0, 0]} isAnimationActive={false} >
                     <LabelList dataKey="kWh" position="insideTop" fill="white"  />
                 </Bar>
                 <Legend />

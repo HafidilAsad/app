@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const CardDoor = ({ titleDoor }) => {
   return (
     <motion.div
-      className='card shadow rounded-5 text-center'
+      className='card shadow rounded-5 text-center  border-3 border-info'
       initial={{ scale: 1 }}
       whileHover={{ scale: 1.05 }} // Scale up on hover
       transition={{ type: "spring", stiffness: 300 }} // Spring animation for smooth effect

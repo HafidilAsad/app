@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const CardSensor = ({ titleSensor, valueSensor, satuanSensor }) => {
     return (
         <motion.div 
-            className="card shadow rounded-5"
+            className="card shadow rounded-5  border-3 border-info"
             initial={{ scale: 1, borderBottom: 'none' }}
             whileHover={{ 
                 scale: 1.05, 
