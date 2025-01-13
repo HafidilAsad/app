@@ -16,7 +16,7 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
         }}
     >
         <div className=" d-flex justify-content-between align-items-center mb-1">
-            <Link className="align-left  " to="https://solusiprogrammer.my.id/">
+            <Link className="align-left  " to="https://solusiprogrammer.com/">
                 <img
                 src={logo}
                 alt=""
