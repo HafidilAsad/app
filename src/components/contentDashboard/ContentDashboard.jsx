@@ -20,7 +20,7 @@ const ContentDashboard = () => {
 
   const fetchDataStatus = async () => {
     try {
-      const response = await axios.get('https://solusiprogrammer.my.id/api/getallstatus')
+      const response = await axios.get('https://solusiprogrammer.com/api/getallstatus')
       setDataStatus(response.data);
       
     } catch (error) {
@@ -39,7 +39,7 @@ const ContentDashboard = () => {
     }));
 
     try {
-      await axios.post(`https://solusiprogrammer.my.id/api/control/${button}/${newState}`);
+      await axios.post(`https://solusiprogrammer.com/api/control/${button}/${newState}`);
       NotificationManager.success(`Lamp ${button} changed `, 'Success');
     } catch (error) {
       console.error(error);
@@ -58,7 +58,7 @@ const ContentDashboard = () => {
     }));
 
     try {
-      await axios.post(`https://solusiprogrammer.my.id/api/control/${button}/${newState}`);
+      await axios.post(`https://solusiprogrammer.com/api/control/${button}/${newState}`);
       NotificationManager.success('Door changed', 'Success');
     } catch (error) {
       console.error(error);
@@ -224,7 +224,7 @@ const getLampStyle = (button) => {
                 {/* <VideoStream /> */}
                 <h1 className='mb-5 fw-semibold text-muted'>Display CCTV</h1>
                <iframe 
-                  src={"https://cctv.solusiprogrammer.my.id/picture/1/frame/"}
+                  src={"https://cctv.solusiprogrammer.com/picture/1/frame/"}
                   width="100%"
                   height="70%"
                   frameBorder="0"
