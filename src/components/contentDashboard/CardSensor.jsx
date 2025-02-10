@@ -1,7 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChargingStation, faGlassWaterDroplet, faTemperatureHalf ,faClock} from '@fortawesome/free-solid-svg-icons';
 
 const CardSensor = ({ titleSensor, valueSensor, satuanSensor }) => {
+    const getIcon = (title) => {
+        switch (title) {
+            case 'kWh':
+                return faChargingStation;
+            case 'Humidity':
+                return faGlassWaterDroplet;
+            case 'Temperature':
+                return faTemperatureHalf;
+            default:
+                return faChargingStation; // Default icon if none match
+        }
+    };
+
     return (
         <motion.div 
             className="card shadow rounded-5  border-3 border-info"
@@ -15,10 +30,32 @@ const CardSensor = ({ titleSensor, valueSensor, satuanSensor }) => {
         >
             <div className="card-body px-5 py-3">
                 <div className="card-title fs-4 mt-1">
-                    {titleSensor}
+                    <div className="row bg-light rounded-3">
+                        <div className="col-8">
+                            {titleSensor}
+                        </div>
+                        <div className="col-4 text-end">
+                            <FontAwesomeIcon
+                                icon={faClock}
+                                className='pt-2 px-2'
+
+                            />
+                        </div>
+                    </div>          
                 </div>
-                <div className="fw-bold" style={{ fontSize: "3em" }}>
-                    {valueSensor} <span className='fs-3'>{satuanSensor}</span>
+                <div className="row">
+                    <div className="col-4">
+                        <FontAwesomeIcon
+                            icon={getIcon(titleSensor)}
+                            className='pt-2'
+                            size='3x'
+                        />
+                    </div>
+                    <div className="col-8">
+                        <div className="fw-bold" style={{ fontSize: "3em" }}>
+                            {valueSensor} <span className='fs-3'>{satuanSensor}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </motion.div>
