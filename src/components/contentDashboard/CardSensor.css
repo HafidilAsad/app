@@ -1,0 +1,14 @@
+.responsive-text {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 3em;
+}
+
+@media (max-width: 576px) {
+    .responsive-text {
+        font-size: 1.5em; /* Adjust the font size for small screens */
+    }
+}

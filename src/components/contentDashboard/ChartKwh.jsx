@@ -14,6 +14,8 @@ const ChartKwh = () => {
         { name: 'Sep', kWh: 30, pv: 4300, amt: 2100 },
         { name: 'Oct', kWh: 40, pv: 4300, amt: 2100 },
         { name: 'Nov', kWh: 30, pv: 4300, amt: 2100 },
+        { name: 'Des', kWh: 32, pv: 4300, amt: 2100 },
+
     ];
 
     return (

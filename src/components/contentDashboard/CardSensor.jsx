@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChargingStation, faGlassWaterDroplet, faTemperatureHalf ,faClock} from '@fortawesome/free-solid-svg-icons';
+import './CardSensor.css';
 
 const CardSensor = ({ titleSensor, valueSensor, satuanSensor }) => {
     const getIcon = (title) => {
@@ -31,7 +32,7 @@ const CardSensor = ({ titleSensor, valueSensor, satuanSensor }) => {
             <div className="card-body px-5 py-3">
                 <div className="card-title fs-4 mt-1">
                     <div className="row bg-light rounded-3">
-                        <div className="col-lg-8 col-md-8 col-sm-3 ">
+                        <div className="col-lg-8 col-md-8 col-sm-3 text-truncate">
                             {titleSensor}
                         </div>
                         <div className="col-lg-4 col-md-4 col-sm-3 text-end d-none d-sm-block">
@@ -52,7 +53,7 @@ const CardSensor = ({ titleSensor, valueSensor, satuanSensor }) => {
                         />
                     </div>
                     <div className="col-8">
-                        <div className="fw-bold fs-1 fs-sm-3" style={{ fontSize: "3em" }}>
+                        <div className="fw-bold fs-1 fs-sm-3 text-truncate" style={{ fontSize: "3em" }}>
                             {valueSensor} <span className='fs-3 fs-sm-6'>{satuanSensor}</span>
                         </div>
                     </div>

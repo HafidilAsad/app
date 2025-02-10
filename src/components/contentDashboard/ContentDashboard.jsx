@@ -226,7 +226,7 @@ const getLampStyle = (button) => {
                   <div className="card shadow rounded-5  border-3 border-info">
                     <div className="card-body">
                       <div className="card-title">
-                        Power Consumtion <span className='text-muted'>kWh</span>
+                        Monthly Consumtion <span className='text-muted'>kWh</span>
                       </div>
                       <ChartKwh />
                     </div>
@@ -280,7 +280,7 @@ const getLampStyle = (button) => {
           <div className="row m-2 mt-2">
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-2">
               <div className='card shadow rounded-5 text-center  border-3 border-info'>
-                <div className='card-body px-5 py-3 text-center'>
+                <div className='card-body px-5 py-3 text-center text-truncate'>
                   <p className='fs-4'>Status Door 1</p>
                   <FontAwesomeIcon
                     icon={dataStatus.button_door_1 === 1 ? faDoorOpen : faDoorClosed}
