@@ -31,13 +31,13 @@ const CardSensor = ({ titleSensor, valueSensor, satuanSensor }) => {
             <div className="card-body px-5 py-3">
                 <div className="card-title fs-4 mt-1">
                     <div className="row bg-light rounded-3">
-                        <div className="col-8">
+                        <div className="col-lg-8 col-md-8 col-sm-3 ">
                             {titleSensor}
                         </div>
-                        <div className="col-4 text-end">
+                        <div className="col-lg-4 col-md-4 col-sm-3 text-end d-none d-sm-block">
                             <FontAwesomeIcon
                                 icon={faClock}
-                                className='pt-2 px-2'
+                                className='pt-2  px-2 pt-sm-0'
 
                             />
                         </div>
@@ -47,13 +47,13 @@ const CardSensor = ({ titleSensor, valueSensor, satuanSensor }) => {
                     <div className="col-4">
                         <FontAwesomeIcon
                             icon={getIcon(titleSensor)}
-                            className='pt-2'
+                            className='pt-2 '
                             size='3x'
                         />
                     </div>
                     <div className="col-8">
-                        <div className="fw-bold" style={{ fontSize: "3em" }}>
-                            {valueSensor} <span className='fs-3'>{satuanSensor}</span>
+                        <div className="fw-bold fs-1 fs-sm-3" style={{ fontSize: "3em" }}>
+                            {valueSensor} <span className='fs-3 fs-sm-6'>{satuanSensor}</span>
                         </div>
                     </div>
                 </div>
