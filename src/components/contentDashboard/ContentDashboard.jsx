@@ -16,6 +16,7 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 const ContentDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [dataStatus, setDataStatus] = useState({});
+  const [kwhKemarin , setKwhKemarin] = useState(0);
 
 
   const fetchDataStatus = async () => {
@@ -27,6 +28,21 @@ const ContentDashboard = () => {
       console.error(error);
     }
   }
+
+  const fetchDataKwhKemarin = async () => {
+    try {
+      const response = await axios.get('https://solusiprogrammer.com/api/energy?status=terbaru')
+      setKwhKemarin(response.data.kwh);
+      // console.log(response.data.kwh);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchDataKwhKemarin();
+  }, [])
+  
   
   const handleButtonChange = async (button, event) => {
     const checked = event.target.checked;
@@ -173,10 +189,35 @@ const getLampStyle = (button) => {
                           </div>
                         </div>
                     </div>
-                      <div className="card mx-5 text-center my-2 shadow rounded-5">
-                        <h3 className='p-4 '>
-                            POWER CONSUMPTION : <span className='fw-bold'>{(dataEnergy).toFixed(1)} watt</span>
-                        </h3>
+                      <div className="card mx-5 text-center my-2 shadow border-0 bg-light">
+                        <div className="row py-2">
+                          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                              <div className='fs-5 px-2 py-3'>
+                                POWER : <span className='fw-bold'>{(dataEnergy).toFixed(1)} watt</span>
+                              </div>
+                          </div>
+                          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                              <div>
+                                SCHEDULING
+                              </div>
+                              <div className='row'>
+                                <div className="col-6">
+                                    AUTO ON AT
+                                </div>
+                                <div className="col-6 fw-semibold">
+                                    07.00
+                                </div>
+                              </div>
+                              <div className='row'>
+                                <div className="col-6">
+                                    AUTO OFF AT
+                                </div>
+                                <div className="col-6 fw-semibold">
+                                    19.00
+                                </div>
+                              </div>
+                          </div>
+                        </div>     
                       </div>
                     </div>
                   </div>
@@ -194,9 +235,9 @@ const getLampStyle = (button) => {
               </div>
               <div className="row mt-2">
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">
-                  <CardSensor 
+                <CardSensor 
                     titleSensor="kWh" 
-                    valueSensor={dataStatus.kwh !== undefined ? dataStatus.kwh.toFixed(1) : "N/A"} 
+                    valueSensor={(typeof dataStatus.kwh === 'number' && typeof kwhKemarin === 'number') ? (dataStatus.kwh - kwhKemarin).toFixed(1) : "N/A"} 
                     satuanSensor="Wh" 
                   />
                 </div>
