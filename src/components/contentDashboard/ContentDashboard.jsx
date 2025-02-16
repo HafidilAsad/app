@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb, faDoorClosed, faDoorOpen, faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
+import { faLightbulb, faDoorClosed, faDoorOpen, faBarsStaggered, faPen } from '@fortawesome/free-solid-svg-icons';
 import ThreeDotsWave from '../threeDotsWaves';
 import CardSensor from './CardSensor';
 import ChartKwh from './ChartKwh';
@@ -12,11 +12,63 @@ import axios from 'axios';
 import { motion } from "framer-motion";
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {Modal, Button, Table, Form} from "react-bootstrap";
 
 const ContentDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [dataStatus, setDataStatus] = useState({});
   const [kwhKemarin , setKwhKemarin] = useState(0);
+  const [showModalSetting, setShowModalSetting] = useState(false);
+  const [dataCronTimes, setDataCronTimes] = useState([]);
+  const [selectedCron, setSelectedCron] = useState(null);
+  const [turnOnTime, setTurnOnTime] = useState("");
+  const [turnOffTime, setTurnOffTime] = useState("");
+
+  const handleShowModalSetting = (key, cron) => {
+    if (!cron) {
+      console.error(`Cron data for ${key} is undefined`);
+      return;
+    }
+    
+    setSelectedCron(key);
+    setTurnOnTime(formatTime(cron.turnOnTime));
+    setTurnOffTime(formatTime(cron.turnOffTime));
+    setShowModalSetting(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModalSetting(false);
+    setSelectedCron(null);
+  };
+
+
+  const handleUpdateCronTime = async () => {
+    try {
+      await axios.post("https://solusiprogrammer.com/api/update-cron-times", {
+        button: selectedCron,
+        turnOnTime: parseTime(turnOnTime),
+        turnOffTime: parseTime(turnOffTime),
+      });
+      NotificationManager.success("Berhasil Update Waktu Schedule", "Success");
+      fetchCronTimes();
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error updating cron time:", error);
+      NotificationManager.error("Gagal Update Waktu Schedule", "Error");
+    }
+  };
+
+  const fetchCronTimes = async () => {
+    try {
+      const response = await axios.get("https://solusiprogrammer.com/api/cron-times");
+      const data = response.data || {}; // Hindari undefined/null
+      setDataCronTimes(data);
+    } catch (error) {
+      console.error(error);
+      setDataCronTimes({});
+    }
+  };
+
 
 
   const fetchDataStatus = async () => {
@@ -41,6 +93,7 @@ const ContentDashboard = () => {
 
   useEffect(() => {
     fetchDataKwhKemarin();
+    fetchCronTimes();
   }, [])
   
   
@@ -131,6 +184,19 @@ const getLampStyle = (button) => {
 };
 
 
+const formatTime = (cronTime) => {
+  const match = cronTime.match(/(\d{2}) (\d{2}) \* \* \*/);
+  return match ? `${match[2]}:${match[1]}` : "";
+};
+
+const parseTime = (time) => {
+  const [hh, mm] = time.split(":");
+  return `${mm} ${hh} * * *`;
+};
+
+console.log(dataCronTimes);
+
+
   return (
     <div className='container-fluid'>
        {loading ? (
@@ -143,7 +209,7 @@ const getLampStyle = (button) => {
                 <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 mt-2">
                   <div className="card shadow rounded-5 border-3 border-info">
                     <div className="card-body ">
-                    <div className="row mx-5 p-4">
+                    <div className="row mx-5 ">
                         <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
                           <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="6x"         style={getLampStyle('button_1')}/>
                           <div className="form-check fs-3 form-switch my-3 d-flex justify-content-center align-items-center">
@@ -189,33 +255,35 @@ const getLampStyle = (button) => {
                           </div>
                         </div>
                     </div>
-                      <div className="card mx-5 text-center my-2 shadow border-0 bg-light">
-                        <div className="row py-2">
-                          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                              <div className='fs-5 px-2 py-3'>
-                                POWER : <span className='fw-bold'>{(dataEnergy).toFixed(1)} watt</span>
-                              </div>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                              <div>
-                                SCHEDULING
-                              </div>
-                              <div className='row'>
-                                <div className="col-6">
-                                    AUTO ON AT
-                                </div>
-                                <div className="col-6 fw-semibold">
-                                    07.00
-                                </div>
-                              </div>
-                              <div className='row'>
-                                <div className="col-6">
-                                    AUTO OFF AT
-                                </div>
-                                <div className="col-6 fw-semibold">
-                                    19.00
-                                </div>
-                              </div>
+                      <div className=" mx-5 text-center shadow border-0  p-0">
+                        <div className="row ">
+                          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" style={{cursor: 'pointer', maxHeight: '10em', overflowY: 'auto'}} onClick={handleShowModalSetting}>
+                            <Table striped bordered hover>
+                              <thead>
+                                <tr>
+                                  <th className='p-0'>No</th>
+                                  <th className='p-0'>Button</th>
+                                  <th className='p-0'>Turn On Time</th>
+                                  <th className='p-0'> Turn Off Time</th>
+                                  <th className='p-0'>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {Object.entries(dataCronTimes).map(([key, cron], index) => (
+                                  <tr key={key}>
+                                    <td className='px-1 py-0' >{index + 1}</td>
+                                    <td className='p-0'>{key}</td>
+                                    <td className='p-0'>{formatTime(cron.turnOnTime)}</td>
+                                    <td className='p-0'>{formatTime(cron.turnOffTime)}</td>
+                                    <td className='p-0'>
+                                      <Button variant="warning" className='mx-2 py-1 ' onClick={() => handleShowModalSetting(key, cron)}>
+                                        <FontAwesomeIcon icon={faPen} />
+                                      </Button>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </Table>   
                           </div>
                         </div>     
                       </div>
@@ -357,6 +425,39 @@ const getLampStyle = (button) => {
             </div>
           </div>
           <NotificationContainer/>
+          <Modal show={showModalSetting} onHide={handleCloseModal} size='lg'>
+            <Modal.Header closeButton>
+              <Modal.Title>Edit Schedule Time</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form>
+                <Form.Group>
+                  <Form.Label>Turn On Time</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={turnOnTime}
+                    onChange={(e) => setTurnOnTime(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Turn Off Time</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={turnOffTime}
+                    onChange={(e) => setTurnOffTime(e.target.value)}
+                  />
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseModal}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={handleUpdateCronTime}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </>
       )}
    
