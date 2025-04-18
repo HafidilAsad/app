@@ -1,7 +1,7 @@
 import React from 'react'
 import Clock from "../clock";
 // import CurrentDate from "../currentDate";
-import logo from "../../assets/logo-white.png";
+import logo from "../../assets/Logo-SDP.png";
 import "./index.css";
 import { Link } from 'react-router-dom';
 
@@ -20,7 +20,8 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 <img
                 src={logo}
                 alt="bms, building management system, bas, building automation system, smart building, smart home, smart city, smart grid, energy management system, ems, energy monitoring system, ems, energy efficiency, energy conservation, energy management software"
-                width={100}
+                width={150}
+                height={50}
                 className="ps-4 pt-2"
                 />
               
