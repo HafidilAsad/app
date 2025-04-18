@@ -497,7 +497,7 @@ console.log(dataCronTimes);
                 <Form.Group>
                   <Form.Label>Turn On Time</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="time"
                     value={turnOnTime}
                     onChange={(e) => setTurnOnTime(e.target.value)}
                   />
@@ -505,7 +505,7 @@ console.log(dataCronTimes);
                 <Form.Group>
                   <Form.Label>Turn Off Time</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="time"
                     value={turnOffTime}
                     onChange={(e) => setTurnOffTime(e.target.value)}
                   />
@@ -530,7 +530,7 @@ console.log(dataCronTimes);
             <Modal.Body style={{ maxHeight: '70vh', overflowY: 'auto' }}>
                 <div className='d-flex justify-content-end mb-2'>
                   <Button variant="success" onClick={handleExportToExcel}>
-                    <FontAwesomeIcon icon={faFileExcel} /> Download
+                    <FontAwesomeIcon icon={faFileExcel} /> Export
                   </Button>
                 </div>
                 <ReportTable dataReport={dataReport} />
