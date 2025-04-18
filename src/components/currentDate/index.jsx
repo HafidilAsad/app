@@ -23,7 +23,7 @@ const CurrentDate = () => {
     return new Date().toLocaleDateString("id-ID", options);
   }
 
-  return <div>{currentDate}</div>;
+  return <div className="text-white">{currentDate}</div>;
 };
 
 export default CurrentDate;

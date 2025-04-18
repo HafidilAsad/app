@@ -1,6 +1,6 @@
 import React from 'react'
 import Clock from "../clock";
-// import CurrentDate from "../currentDate";
+import CurrentDate from "../currentDate";
 import logo from "../../assets/Logo-SDP.png";
 import "./index.css";
 import { Link } from 'react-router-dom';
@@ -40,17 +40,18 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 </div>
             </div>
             <div
-                className="align-right  rounded-3 d-flex shadow-sm mx-3  "
+                className="align-right rounded-3 d-flex flex-column justify-content-center shadow-sm mx-3 text-center"
                 style={{
-                height: 70,
-                // width: "20%",
+                    height: 70,
                 }}
-            >
-                {/* <span className="px-3 mt-3 fs-4"><CurrentDate /></span> */}
-                <span className="px-3 mt-3 font-header-line text-white"> 
+                >
+                <span className="fs-5 text-white">
                     <Clock />
                 </span>
-            </div>
+                <span style={{ fontSize: '0.45rem' }}>
+                    <CurrentDate />
+                </span>
+                </div>
         </div>
     </div>
      )
