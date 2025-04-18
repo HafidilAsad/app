@@ -378,27 +378,27 @@ console.log(dataCronTimes);
                                         <thead>
                                             <tr>
                                             <th className='p-0'>No</th>
-                                            <th className='p-0'>Button</th>
+                                            <th className='p-0'>Lamp</th>
                                             <th className='p-0'>Turn On Time</th>
                                             <th className='p-0'> Turn Off Time</th>
                                             <th className='p-0'>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {Object.entries(dataCronTimes).map(([key, cron], index) => (
-                                            <tr key={key}>
-                                                <td className='px-1 py-0' >{index + 1}</td>
-                                                <td className='p-0'>{key}</td>
-                                                <td className='p-0'>{formatTime(cron.turnOnTime)}</td>
-                                                <td className='p-0'>{formatTime(cron.turnOffTime)}</td>
-                                                <td className='p-0'>
-                                                <Button variant="info" className='mx-2 py-1 ' onClick={() => handleShowModalSetting(key, cron)}>
-                                                    <FontAwesomeIcon icon={faPen} />
-                                                </Button>
-                                                </td>
-                                            </tr>
-                                            ))}
-                                        </tbody>
+                                          {Object.entries(dataCronTimes).map(([key, cron], index) => (
+                                              <tr key={key}>
+                                                  <td className='px-1 py-0'>{index + 1}</td>
+                                                  <td className='p-0'>{`Lampu ${index + 1}`}</td> {/* Map button_1 to Lampu 1 */}
+                                                  <td className='p-0'>{formatTime(cron.turnOnTime)}</td>
+                                                  <td className='p-0'>{formatTime(cron.turnOffTime)}</td>
+                                                  <td className='p-0'>
+                                                      <Button variant="info" className='mx-2 py-1' size="sm" onClick={() => handleShowModalSetting(key, cron)}>
+                                                          <FontAwesomeIcon icon={faPen} />
+                                                      </Button>
+                                                  </td>
+                                              </tr>
+                                          ))}
+                                      </tbody>
                                         </Table>   
                                     </div>
                                     </div>     

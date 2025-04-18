@@ -4,7 +4,7 @@ import ContentDashboardv2 from '../../components/contentDashboard/ContentDashboa
 
 const Dashboardv2 = () => {
   return (
-    <div style={{backgroundColor: "#010101", height: "100vh"}}>
+    <div style={{backgroundColor: "#010101", height: ""}}>
       <HeaderLayout2  judulHeader={"Monitoring and Controlling Dashboard"} bgHeader={"#1a1e27"} colorTitle={"#ffffff"}/>
       <ContentDashboardv2 />
     </div>

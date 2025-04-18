@@ -59,7 +59,7 @@ const ChartKwh2 = () => {
         <Tooltip />
         <Legend />
         <Bar dataKey="kWh" fill="gold" radius={[5, 5, 0, 0]} isAnimationActive={false}>
-          <LabelList dataKey="kWh" position="insideTop" fill="white" />
+          <LabelList dataKey="kWh" position="insideTop" fill="black" />
         </Bar>
       </BarChart>
     </ResponsiveContainer>

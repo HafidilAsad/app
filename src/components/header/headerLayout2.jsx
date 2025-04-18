@@ -20,8 +20,8 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 <img
                 src={logo}
                 alt="bms, building management system, bas, building automation system, smart building, smart home, smart city, smart grid, energy management system, ems, energy monitoring system, ems, energy efficiency, energy conservation, energy management software"
-                width={60}
-                className="header-logo"
+                width={100}
+                className="ps-4 pt-2"
                 />
               
             </Link>

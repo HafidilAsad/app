@@ -36,7 +36,9 @@ const ChartHumidity = () => {
                     <LabelList dataKey="Humidity" position="insideTop" fill="white" />
                 </Bar>
                 <Legend />
-                <Tooltip />
+                <Tooltip 
+                    cursor={{ fill: 'transparent' }} // Prevent gray hover effect
+                />
                 <YAxis /> {/* Set the Y-axis domain to 0-100 for humidity percentage */}
             </BarChart>
         </ResponsiveContainer>
