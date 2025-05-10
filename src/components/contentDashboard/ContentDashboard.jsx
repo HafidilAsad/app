@@ -305,8 +305,8 @@ console.log(dataCronTimes);
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">
                 <CardSensor 
                     titleSensor="kWh" 
-                    valueSensor={(typeof dataStatus.kwh === 'number' && typeof kwhKemarin === 'number') ? (dataStatus.kwh - kwhKemarin).toFixed(1) : "N/A"} 
-                    satuanSensor="Wh" 
+                    valueSensor={(typeof dataStatus.voltage === 'number' && typeof dataStatus.arus === 'number') ? (dataStatus.voltage * dataStatus.arus   ).toFixed(1) : 0} 
+                    satuanSensor="watt" 
                   />
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-2">

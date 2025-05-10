@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.acbccb04.css",
-    "main.js": "/static/js/main.d25cfbda.js",
+    "main.js": "/static/js/main.a503ebf4.js",
     "static/js/453.68693753.chunk.js": "/static/js/453.68693753.chunk.js",
     "static/media/Logo-SDP.png": "/static/media/Logo-SDP.cb024e9ad5c854e4661a.png",
     "static/media/S7.jpg": "/static/media/S7.3b255a2197b61f86acb5.jpg",
@@ -11,11 +11,11 @@
     "static/media/notification.ttf?s3g3t9": "/static/media/notification.c5d9251ea82e42f75381.ttf",
     "index.html": "/index.html",
     "main.acbccb04.css.map": "/static/css/main.acbccb04.css.map",
-    "main.d25cfbda.js.map": "/static/js/main.d25cfbda.js.map",
+    "main.a503ebf4.js.map": "/static/js/main.a503ebf4.js.map",
     "453.68693753.chunk.js.map": "/static/js/453.68693753.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.acbccb04.css",
-    "static/js/main.d25cfbda.js"
+    "static/js/main.a503ebf4.js"
   ]
 }

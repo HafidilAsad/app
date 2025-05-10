@@ -435,7 +435,7 @@ console.log(dataCronTimes);
             <div className="col-lg-6 col-md-12 col-sm-12">
                 <div className="row mb-2">
                     <div className="col-lg-6 col-md-12 col-sm-12">
-                        <CardSenensor2 titleSensor="kWh"  valueSensor={(typeof dataStatus.kwh === 'number' && typeof kwhKemarin === 'number') ? (dataStatus.kwh - kwhKemarin).toFixed(1) : "0"}  satuanSensor="kWh" />
+                        <CardSenensor2 titleSensor="kWh"  valueSensor={(typeof dataStatus.voltage === 'number' && typeof dataStatus.arus === 'number') ? (dataStatus.voltage  * dataStatus.arus).toFixed(1) : "0"}  satuanSensor="watt" />
                     </div>
                     <div className="col-lg-6 col-md-12 col-sm-12">
                         <CardSenensor2 titleSensor="Water Usage" valueSensor={80} satuanSensor="m³" />
