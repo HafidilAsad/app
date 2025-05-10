@@ -1,6 +1,6 @@
 import React from 'react'
 import Clock from "../clock";
-// import CurrentDate from "../currentDate";
+import CurrentDate from "../currentDate";
 import logo from "../../assets/logo.png";
 import "./index.css";
 import { Link } from 'react-router-dom';
