@@ -58,22 +58,24 @@ const DashboardV3 = () => { // Ubah nama fungsi menjadi DashboardV3
   ];
 
   return (
-    <div
-      style={{
-        fontFamily: 'monospace',
-        backgroundColor: '#f5f5f5',
-        maxWidth: '100vw',
-      }}
-    >
-      <HeaderLayout judulHeader={'Smart Parking Zone'} />
-      <div className="container-fluid p-4">
-        <div className="row">
-          <ParkingInfo parkingInfoData={parkingInfoData} />
-          <ParkingDataCards parkingData={parkingData} parkingDataCard={parkingDataCard} />
-        </div>
+  <div
+    style={{
+      fontFamily: 'monospace',
+      backgroundColor: '#f5f5f5',
+      maxWidth: '100vw',
+      minWidth: '1024px', 
+      overflowX: 'auto', 
+    }}
+  >
+    <HeaderLayout judulHeader={'Smart Parking Zone'} />
+    <div className="container-fluid p-4">
+      <div className="row">
+        <ParkingInfo parkingInfoData={parkingInfoData} />
+        <ParkingDataCards parkingData={parkingData} parkingDataCard={parkingDataCard} />
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default DashboardV3; // Pastikan ekspor juga menggunakan nama baru

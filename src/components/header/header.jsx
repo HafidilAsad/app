@@ -45,8 +45,8 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 // width: "20%",
                 }}
             >
-                {/* <span className="px-3 mt-3 fs-4"><CurrentDate /></span> */}
-                <span className="px-3 mt-3 font-header-line">
+                <span className="px-3 mt-3 text-dark fs-4"><CurrentDate /></span>
+                <span className="px-3 mt-3 ">
                     <Clock />
                 </span>
             </div>
