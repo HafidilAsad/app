@@ -60,10 +60,10 @@ const ChartTemperature = ({valueTemperature}) => {
                 // elastic: true,
             }}
             labels={{
-                valueLabel: { formatTextValue: value => value + 'ºC' },
+                valueLabel: { formatTextValue: value => value + ' kwh' },
                 tickLabels: {
                 type: 'outer',
-                valueConfig: { formatTextValue: value => value + 'ºC', fontSize: 10 },
+                valueConfig: { formatTextValue: value => value +  'kwh', fontSize: 10 },
                 ticks: [
                     { value: 13 },
                     { value: 22.5 },

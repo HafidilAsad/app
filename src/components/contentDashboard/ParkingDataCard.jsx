@@ -1,12 +1,11 @@
-import React from 'react';
 
-const ParkingDataCards = ({ parkingData }) => {
+const ParkingDataCards = ({ parkingData , ParkingDataCard}) => {
   return (
     <div className="col-md-4 col-sm-12 mt-2">
       {parkingData.map((item, idx) => (
         <div
           key={idx}
-          className="card mb-3 h-25"
+          className="card mb-3 "
           style={{
             borderLeft: `8px solid ${item.color}`,
             borderRadius: '10px',

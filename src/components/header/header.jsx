@@ -20,15 +20,15 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 <img
                 src={logo}
                 alt=""
-     
-                className="header-logo"
+                width={120}
+                className=""
                 />
               
             </Link>
             <div className="align-center">
                 <div className="  font-header-line  fw-bold ">
                 <div
-                    className=" mt-2  px-5 border-0   "
+                    className=" my-1  px-5 border-0   "
                     style={{
                  
                     color: colorTitle,

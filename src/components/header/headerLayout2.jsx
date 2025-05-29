@@ -26,7 +26,7 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 />
               
             </Link>
-            <div className="align-center">
+            <div className="align-center d-none d-md-block">
                 <div className="  font-header-line  fw-bold ">
                 <div
                     className=" mt-2  px-5 border-0   "
