@@ -48,7 +48,7 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
               
             </Link>
             <div className="align-center">
-                <div className="  font-header-line  fw-bold ">
+                <div className="  fs-3  fw-bold ">
                 <div
                     className=" my-1  px-5 border-0   "
                     style={{

@@ -47,7 +47,7 @@ const ParkingInfo = ({ parkingInfoData, parkingDataCard }) => {
     { id: 37, top: '39%', left: '78%' },
     { id: 38, top: '39%', left: '82%' },
 
-/* Bar 3 */
+    /* Bar 3 */
     { id: 39, top: '54%', left: '7.5%' },
     { id: 40, top: '54%', left: '11.5%' },
     { id: 41, top: '54%', left: '15.5%' },
@@ -68,7 +68,7 @@ const ParkingInfo = ({ parkingInfoData, parkingDataCard }) => {
     { id: 56, top: '54%', left: '78.5%' },
     { id: 57, top: '54%', left: '82.5%' },
 
-/* Bar 4 */
+    /* Bar 4 */
     { id: 58, top: '77%', left: '6.5%' },
     { id: 59, top: '77%', left: '11.5%' },
     { id: 60, top: '77%', left: '15.5%' },
@@ -88,7 +88,6 @@ const ParkingInfo = ({ parkingInfoData, parkingDataCard }) => {
     { id: 74, top: '77%', left: '75%' },
     { id: 75, top: '77%', left: '79%' },
     { id: 76, top: '77%', left: '84%' },
-
   ];
 
   return (
@@ -106,37 +105,42 @@ const ParkingInfo = ({ parkingInfoData, parkingDataCard }) => {
         }}
       >
         {/* Render gambar berdasarkan data */}
-     {parkingInfoData.map((slot) => {
-        // Cari posisi berdasarkan ID
-        const position = positions.find((pos) => pos.id === slot.id);
+        {parkingInfoData.map((slot) => {
+          // Cari posisi berdasarkan ID
+          const position = positions.find((pos) => pos.id === slot.id);
 
-        // Tentukan gambar berdasarkan jenis mobil
-        const carImage = slot.car === 'HONDA_CITY' ? gambarCity : gambarBmw;
+          // Tentukan gambar berdasarkan jenis mobil
+          const carImage = slot.car === 'HONDA_CITY' ? gambarCity : gambarBmw;
 
-        // Jika posisi ditemukan dan status bukan 0, render gambar
-        return position && slot.status !== 0 ? (
-          <img
-            key={slot.id}
-            src={carImage}
-            alt={slot.car}
-            style={{
-              position: 'absolute',
-              top: position.top,
-              left: position.left,
-              width: '80px',
-              height: 'auto',
-            }}
-          />
-        ) : null;
-      })}
+          // Tentukan rotasi untuk Bar 2 dan Bar 4
+          const isRotated =
+            (slot.id >= 20 && slot.id <= 38) || (slot.id >= 58 && slot.id <= 76);
+
+          // Jika posisi ditemukan dan status bukan 0, render gambar
+          return position && slot.status !== 0 ? (
+            <img
+              key={slot.id}
+              src={carImage}
+              alt={slot.car}
+              style={{
+                position: 'absolute',
+                top: position.top,
+                left: position.left,
+                width: '80px',
+                height: 'auto',
+                transform: isRotated ? 'rotate(180deg)' : 'none', // Rotasi 180 derajat untuk Bar 2 dan Bar 4
+              }}
+            />
+          ) : null;
+        })}
       </div>
       <div className="row mt-3">
         <div className="col">
           <div className="card w-100">
             <div className="card-body">
-              <h5 className="card-title">Parking Zone (Green Parking) Information</h5>
+              <h5 className="card-title">Parking Zone <span className="fw-bold fs-4 text-success"> ( 🍃Green Parking)</span> Information</h5>
               <p className="card-text">
-                This parking zone has a total capacity of {parkingInfoData.length} vehicles and with carbon emission reduction of {parkingDataCard.co_level}% compared to the previous year.
+                This parking zone has a total capacity of <span className="fw-bold fs-4">{parkingInfoData.length}</span> vehicles and with carbon emission reduction of <span className="fw-bold fs-4">{parkingDataCard.co_level}%</span> compared to the previous year.
               </p>
             </div>
           </div>
