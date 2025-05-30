@@ -70,7 +70,7 @@ const DashboardV3 = () => { // Ubah nama fungsi menjadi DashboardV3
     <HeaderLayout judulHeader={'Smart Parking Zone'} />
     <div className="container-fluid p-4">
       <div className="row">
-        <ParkingInfo parkingInfoData={parkingInfoData} />
+        <ParkingInfo parkingInfoData={parkingInfoData}  parkingDataCard={parkingDataCard} />
         <ParkingDataCards parkingData={parkingData} parkingDataCard={parkingDataCard} />
       </div>
     </div>

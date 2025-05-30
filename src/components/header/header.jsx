@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Clock from "../clock";
 import CurrentDate from "../currentDate";
 import logo from "../../assets/logo.png";
@@ -6,6 +6,28 @@ import "./index.css";
 import { Link } from 'react-router-dom';
 
 const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
+      const [currentDate, setCurrentDate] = useState(getFormattedDate());
+    
+      useEffect(() => {
+        const intervalId = setInterval(() => {
+          setCurrentDate(getFormattedDate());
+        }, 60 * 60 * 1000);
+    
+        return () => {
+          clearInterval(intervalId);
+        };
+      }, []);
+    
+      function getFormattedDate() {
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        return new Date().toLocaleDateString("id-ID", options);
+      }
+
   return (
     <div
         className="mt-0 shadow "
@@ -38,16 +60,17 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 </div>
                 </div>
             </div>
-            <div
-                className="align-right  rounded-3 d-flex shadow-sm mx-3  "
+           <div
+                className="align-right rounded-3 d-flex flex-column justify-content-center shadow-sm mx-3 text-center"
                 style={{
-                height: 70,
-                // width: "20%",
+                    height: 70,
                 }}
-            >
-                <span className="px-3 mt-3 text-dark fs-4"><CurrentDate /></span>
-                <span className="px-3 mt-3 ">
+                >
+                <span className="fs-5">
                     <Clock />
+                </span>
+                <span style={{ fontSize: '0.45rem',  color: 'black !important' }}>
+                    {currentDate}
                 </span>
             </div>
         </div>

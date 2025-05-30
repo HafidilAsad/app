@@ -51,7 +51,7 @@ const HeaderLayout = ({ judulHeader, bgHeader, colorTitle }) => {
                 <span style={{ fontSize: '0.45rem' }}>
                     <CurrentDate />
                 </span>
-                </div>
+            </div>
         </div>
     </div>
      )

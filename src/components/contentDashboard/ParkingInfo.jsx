@@ -2,7 +2,7 @@ import parkingImg from '../../assets/parking_cars_2.png';
 import gambarBmw from '../../assets/bmw.png';
 import gambarCity from '../../assets/city.png';
 
-const ParkingInfo = ({ parkingInfoData }) => {
+const ParkingInfo = ({ parkingInfoData, parkingDataCard }) => {
   // Posisi untuk setiap slot berdasarkan ID
   const positions = [
     /* Bar 1 */
@@ -106,29 +106,29 @@ const ParkingInfo = ({ parkingInfoData }) => {
         }}
       >
         {/* Render gambar berdasarkan data */}
-        {parkingInfoData.map((slot) => {
-          // Cari posisi berdasarkan ID
-          const position = positions.find((pos) => pos.id === slot.id);
+     {parkingInfoData.map((slot) => {
+        // Cari posisi berdasarkan ID
+        const position = positions.find((pos) => pos.id === slot.id);
 
-          // Tentukan gambar berdasarkan jenis mobil
-          const carImage = slot.car === 'HONDA_CITY' ? gambarCity : gambarBmw;
+        // Tentukan gambar berdasarkan jenis mobil
+        const carImage = slot.car === 'HONDA_CITY' ? gambarCity : gambarBmw;
 
-          // Jika posisi ditemukan, render gambar
-          return position ? (
-            <img
-              key={slot.id}
-              src={carImage}
-              alt={slot.car}
-              style={{
-                position: 'absolute',
-                top: position.top,
-                left: position.left,
-                width: '80px',
-                height: 'auto',
-              }}
-            />
-          ) : null;
-        })}
+        // Jika posisi ditemukan dan status bukan 0, render gambar
+        return position && slot.status !== 0 ? (
+          <img
+            key={slot.id}
+            src={carImage}
+            alt={slot.car}
+            style={{
+              position: 'absolute',
+              top: position.top,
+              left: position.left,
+              width: '80px',
+              height: 'auto',
+            }}
+          />
+        ) : null;
+      })}
       </div>
       <div className="row mt-3">
         <div className="col">
@@ -136,7 +136,7 @@ const ParkingInfo = ({ parkingInfoData }) => {
             <div className="card-body">
               <h5 className="card-title">Parking Zone (Green Parking) Information</h5>
               <p className="card-text">
-                This parking zone has a total capacity of 650 vehicles and with carbon emission reduction of 35% compared to the previous year.
+                This parking zone has a total capacity of {parkingInfoData.length} vehicles and with carbon emission reduction of {parkingDataCard.co_level}% compared to the previous year.
               </p>
             </div>
           </div>
