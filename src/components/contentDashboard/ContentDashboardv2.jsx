@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb ,faBarsStaggered, faPen, faFile, faFileExcel } from '@fortawesome/free-solid-svg-icons';
+import { faLightbulb ,faBarsStaggered, faPen, faFile, faFileExcel, faExpand, faTable } from '@fortawesome/free-solid-svg-icons';
 import ThreeDotsWave from '../threeDotsWaves';
 import M221 from "../../assets/M221.jpg";
 import S7 from "../../assets/S7.jpg";
@@ -290,7 +290,7 @@ const parseTime = (time) => {
   return `${mm} ${hh} * * *`;
 };
 
-console.log(dataCronTimes);
+
 
 
   return (
@@ -302,20 +302,37 @@ console.log(dataCronTimes);
           <div className="row m-2 mt-2 ">
             <div className="col-lg-4">
                 <div className="card shadow h-100 " onClick={handleShowCctv} style={{cursor: 'pointer', backgroundColor: '#010101', border: '2px solid #68696d', borderRadius: '10px'}}>
-                    <div className="card-body text-center ">
-            
-                    {/* <JsmpegPlayer url={websocketUrl} /> */}
-                    {/* <VideoStream /> */}
-                    <h4 className='mb-2 fw-semibold text-white'>Display CCTV</h4>
-                <iframe 
-                    src={"https://cctv.solusiprogrammer.com/picture/1/frame/"}
-                    width="100%"
-                    height="70%"
-                    frameBorder="0"
-                    allowFullScreen
-                
+                    <div className="card-body ">
+                      <div className="d-flex justify-content-between">
+                        <div className="align-left">
+                         
+                        </div>
+                        <div className="align-center">
+                          <h4 className='mb-2 fw-semibold text-white'>Display CCTV</h4>
+                        </div>
+                        <div className="align-right">
+                          <FontAwesomeIcon
+                          icon={faExpand}
+                          className="text-white"
+                          style={{ cursor: 'pointer', fontSize: '1.3em' }}
+                          onClick={e => {
+                            e.stopPropagation(); // Prevent triggering card's onClick
+                            handleShowCctv();
+                          }}
+                        />
+                        </div>
+                      </div>
+                     
+
                     
-                    />
+                    
+                        <iframe 
+                            src={"https://cctv.solusiprogrammer.com/picture/1/frame/"}
+                            width="100%"
+                            height="70%"
+                            frameBorder="0"
+                            allowFullScreen
+                            />
                     </div>
                 </div>
             </div>
@@ -416,6 +433,9 @@ console.log(dataCronTimes);
                     <div className="col-12 mb-2">
                         <div className="card" onClick={handleShowDataReport} style={{cursor: 'pointer', backgroundColor: '#010101', border: '2px solid #68696d', borderRadius: '10px'}}>
                             <div className="card-body">
+                                <span className='text-end' style={{ float: 'right', cursor: 'pointer' }}>
+                                  <FontAwesomeIcon icon={faTable} className='me-2 text-white' />
+                                </span>
                                 <ChartKwh2 />
                             </div>
                         </div>                   
@@ -425,6 +445,9 @@ console.log(dataCronTimes);
                     <div className="col-12">
                         <div className="card" onClick={handleShowDataReport} style={{cursor: 'pointer', backgroundColor: '#010101', border: '2px solid #68696d', borderRadius: '10px'}}>
                             <div className="card-body">
+                              <span className='text-end' style={{ float: 'right', cursor: 'pointer' }}>
+                                <FontAwesomeIcon icon={faTable} className='me-2 text-white' style={{  cursor: 'pointer' }}/>
+                              </span>
                                 <ChartHumidity />
                             </div>
                         </div>                   

@@ -29,7 +29,7 @@ const ChartKwh2 = () => {
 
           return {
             name: new Date(item.createdAt).toLocaleDateString('en-US', {
-              month: 'short',
+              // month: 'short',
               day: 'numeric',
             }),
             kWh: parseFloat((currentKwh - previousKwh).toFixed(1)),

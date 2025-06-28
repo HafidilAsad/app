@@ -10,7 +10,7 @@ const ChartHumidity = () => {
             try {
                 const response = await axios.get('https://solusiprogrammer.com/api/energy');
                 const transformedData = response.data.map((item) => ({
-                    name: new Date(item.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                    name: new Date(item.createdAt).toLocaleDateString('en-US', {  day: 'numeric' }),
                     Humidity: item.humidity, // Use humidity for the chart
                 }));
                 setData(transformedData);
