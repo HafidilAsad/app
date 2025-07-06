@@ -19,6 +19,8 @@ import * as XLSX from 'xlsx';
 
 
 const ContentDashboardv2 = () => {
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [loading, setLoading] = useState(true);
   const [dataStatus, setDataStatus] = useState({});
   const [kwhKemarin , setKwhKemarin] = useState(0);
@@ -64,55 +66,62 @@ const handleShowCctv = () => {
 const handleCloseCctv = () => {
     setShowModalCctv(false);
 };
-
-  
-
-  const handleShowDataReport = async () => {
-    try {
-      const response = await axios.get("https://solusiprogrammer.com/api/energy");
-      const rawData = response.data;
-  
-      const sortedData = [...rawData].sort(
-        (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-      );
-  
-      const transformedData = sortedData.map((item, index, arr) => {
-        const currentKwh = item.kwh / 1000;
-  
-        if (index === 0) {
-          return {
-            ...item,
-            deltaKwh: 0,
-            cost: 0,
-            efficiency: 0,
-            humidity: parseFloat(item.humidity.toFixed(1)),
-            temperature: parseFloat(item.temperature.toFixed(1)),
-          };
-        }
-  
-        const prevKwh = arr[index - 1].kwh / 1000;
-        const delta = currentKwh - prevKwh;
-        const deltaKwh = parseFloat(delta.toFixed(3));
-        const cost = parseFloat((deltaKwh * 1300).toFixed(1));
-        const efficiency = parseFloat((Math.random() * 100).toFixed(1));
-  
-        return {
-          ...item,
-          deltaKwh: deltaKwh === 0 ? null : deltaKwh,
-          cost: deltaKwh === 0 ? null : cost,
-          efficiency: deltaKwh === 0 ? null : efficiency,
-          humidity: parseFloat(item.humidity.toFixed(1)),
-          temperature: parseFloat(item.temperature.toFixed(1)),
-        };
-      });
-  
-      setDataReport(transformedData);
-      setShowModalReport(true);
-    } catch (error) {
-      console.error(error);
+const handleShowDataReport = async () => {
+  try {
+    let url = "https://solusiprogrammer.com/api/energy";
+    if (startDate && endDate) {
+      url += `?start_date=${startDate}&end_date=${endDate}`;
     }
-  };
-  
+    const response = await axios.get(url);
+    const rawData = response.data;
+
+    const sortedData = [...rawData].sort(
+      (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+    );
+
+  const targetKwh = 338;
+
+  const transformedData = sortedData.map((item, index, arr) => {
+    const currentKwh = item.kwh / 1000;
+
+    if (index === 0) {
+      return {
+        ...item,
+        deltaKwh: 0,
+        cost: 0,
+        efficiency: 0,
+        humidity: parseFloat(item.humidity.toFixed(1)),
+        temperature: parseFloat(item.temperature.toFixed(1)),
+      };
+    }
+
+    const prevKwh = arr[index - 1].kwh / 1000;
+    const delta = currentKwh - prevKwh;
+    const deltaKwh = parseFloat(delta.toFixed(3));
+    const cost = parseFloat((deltaKwh * 1300).toFixed(1));
+
+    // Hitung efficiency berdasarkan target
+    const efficiency = deltaKwh === 0
+      ? null
+      : parseFloat(((deltaKwh / targetKwh) * 100).toFixed(1));
+
+    return {
+      ...item,
+      deltaKwh: deltaKwh === 0 ? null : deltaKwh,
+      cost: deltaKwh === 0 ? null : cost,
+      efficiency,
+      humidity: parseFloat(item.humidity.toFixed(1)),
+      temperature: parseFloat(item.temperature.toFixed(1)),
+    };
+  });
+
+
+    setDataReport(transformedData);
+    setShowModalReport(true);
+  } catch (error) {
+    console.error(error);
+  }
+};
   
   
 
@@ -551,12 +560,31 @@ const parseTime = (time) => {
                <FontAwesomeIcon icon={faFile} /> Report Data for Energy</Modal.Title>
             </Modal.Header>
             <Modal.Body style={{ maxHeight: '70vh', overflowY: 'auto' }}>
-                <div className='d-flex justify-content-end mb-2'>
-                  <Button variant="success" onClick={handleExportToExcel}>
-                    <FontAwesomeIcon icon={faFileExcel} /> Export
-                  </Button>
-                </div>
-                <ReportTable dataReport={dataReport} />
+              <div className="d-flex justify-content-end mb-2">
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={e => setStartDate(e.target.value)}
+                  className="form-control me-2"
+                  style={{ maxWidth: 160 }}
+                  placeholder="Start Date"
+                />
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={e => setEndDate(e.target.value)}
+                  className="form-control me-2"
+                  style={{ maxWidth: 160 }}
+                  placeholder="End Date"
+                />
+                <Button variant="primary" onClick={handleShowDataReport} className="me-2">
+                  Filter
+                </Button>
+                <Button variant="success" onClick={handleExportToExcel}>
+                  <FontAwesomeIcon icon={faFileExcel} /> Export
+                </Button>
+              </div>
+              <ReportTable dataReport={dataReport} />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleCloseModalReport}>
