@@ -96,6 +96,46 @@ const Dashboardv4 = () => {
         bgHeader="#1a1e27"
         colorTitle="#ffffff"
       />
+       <div className="row my-2">
+          <div className="col">
+            <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
+              <div className="card-body">
+                <h5 className="text-white text-center mb-3">kWh History</h5>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={dataHistory}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" stroke="#fff" />
+                    <YAxis stroke="#fff" />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="kwh" fill="#5BE12C">
+                      <LabelList dataKey="kwh" position="top" fill="#fff" />
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
+              <div className="card-body">
+                <h5 className="text-white text-center mb-3">Efficiency</h5>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={dataHistory}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" stroke="#fff" />
+                    <YAxis stroke="#fff" />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="eff" fill="#5BE12C">
+                      <LabelList dataKey="eff" position="top" fill="#fff" />
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+      </div>
       <div className="row my-2">
         {dataEnergy.map((dataEnergy) => (
           <MeterCard
@@ -129,47 +169,6 @@ const Dashboardv4 = () => {
             </div>
           </div>
         </div>
-      </div>
-    
-      <div className="row my-2">
-          <div className="col">
-            <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
-              <div className="card-body">
-                <h5 className="text-white text-center mb-3">kWh History</h5>
-                <ResponsiveContainer width="100%" height={250}>
-                  <BarChart data={dataHistory}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" stroke="#fff" />
-                    <YAxis stroke="#fff" />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="kwh" fill="#5BE12C">
-                      <LabelList dataKey="kwh" position="top" fill="#fff" />
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
-              <div className="card-body">
-                <h5 className="text-white text-center mb-3">Efficiency</h5>
-                <ResponsiveContainer width="100%" height={250}>
-                  <BarChart data={dataHistory}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" stroke="#fff" />
-                    <YAxis stroke="#fff" />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="eff" fill="#5BE12C">
-                      <LabelList dataKey="eff" position="top" fill="#fff" />
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-          </div>
       </div>
       </div>
 
