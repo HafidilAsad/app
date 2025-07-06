@@ -343,7 +343,7 @@ const parseTime = (time) => {
                             <div className="  border-0">
                                 <div className="card-body ">
                                 <div className="row mx-5 ">
-                                    <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
+                                    <div className="col  text-center">
                                     <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="3x"         style={getLampStyle('button_1')}/>
                                     <div className="form-check fs-5 form-switch my-1 d-flex justify-content-center align-items-center">
                                         <input 
@@ -354,7 +354,7 @@ const parseTime = (time) => {
                                         />
                                     </div>
                                     </div>
-                                    <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
+                                    <div className="col  text-center">
                                     <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="3x"  style={getLampStyle('button_2')}  />
                                     <div className="form-check fs-5 form-switch my-1 d-flex justify-content-center align-items-center">
                                         <input 
@@ -365,7 +365,7 @@ const parseTime = (time) => {
                                         />
                                     </div>
                                     </div>
-                                    <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
+                                    <div className="col  text-center">
                                     <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="3x"    style={getLampStyle('button_3')} />
                                     <div className="form-check fs-5 form-switch my-1 d-flex justify-content-center align-items-center">
                                         <input 
@@ -376,7 +376,7 @@ const parseTime = (time) => {
                                         />
                                     </div>
                                     </div>
-                                    <div className="col-lg-3 col-md-6 col-sm-6 col-xs-6 text-center">
+                                    <div className="col  text-center">
                                     <FontAwesomeIcon icon={faLightbulb} className="mb-3" size="3x"  style={getLampStyle('button_4')}/>
                                     <div className="form-check fs-5 form-switch my-1 d-flex justify-content-center align-items-center">
                                         <input 

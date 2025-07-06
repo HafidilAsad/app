@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.acbccb04.css",
-    "main.js": "/static/js/main.a13d8f16.js",
+    "main.css": "/static/css/main.e8795d30.css",
+    "main.js": "/static/js/main.294b8d7d.js",
     "static/js/453.68693753.chunk.js": "/static/js/453.68693753.chunk.js",
     "static/media/parking_cars_2.png": "/static/media/parking_cars_2.c4144465b4e420372950.png",
     "static/media/bmw.png": "/static/media/bmw.9ee44d0bef660e4c8cc8.png",
@@ -13,12 +13,12 @@
     "static/media/notification.woff?s3g3t9": "/static/media/notification.c392cd33d9d9de730f9d.woff",
     "static/media/notification.ttf?s3g3t9": "/static/media/notification.c5d9251ea82e42f75381.ttf",
     "index.html": "/index.html",
-    "main.acbccb04.css.map": "/static/css/main.acbccb04.css.map",
-    "main.a13d8f16.js.map": "/static/js/main.a13d8f16.js.map",
+    "main.e8795d30.css.map": "/static/css/main.e8795d30.css.map",
+    "main.294b8d7d.js.map": "/static/js/main.294b8d7d.js.map",
     "453.68693753.chunk.js.map": "/static/js/453.68693753.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.acbccb04.css",
-    "static/js/main.a13d8f16.js"
+    "static/css/main.e8795d30.css",
+    "static/js/main.294b8d7d.js"
   ]
 }
