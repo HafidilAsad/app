@@ -1,4 +1,4 @@
-import parkingImg from '../../assets/parking_cars_2.png';
+import parkingImg from '../../assets/parking-nocar.png';
 import gambarBmw from '../../assets/bmw.png';
 import gambarCity from '../../assets/city.png';
 
@@ -6,34 +6,34 @@ const ParkingInfo = ({ parkingInfoData, parkingDataCard }) => {
   // Posisi untuk setiap slot berdasarkan ID
   const positions = [
     /* Bar 1 */
-    { id: 1, top: '13%', left: '7.4%' },
-    { id: 2, top: '13%', left: '12%' },
-    { id: 3, top: '13%', left: '16%' },
-    { id: 4, top: '13%', left: '20%' },
-    { id: 5, top: '13%', left: '24%' },
-    { id: 6, top: '13%', left: '28%' },
-    { id: 7, top: '13%', left: '32.5%' },
-    { id: 8, top: '13%', left: '36%' },
-    { id: 9, top: '13%', left: '40%' },
-    { id: 10, top: '13%', left: '44%' },
-    { id: 11, top: '13%', left: '48%' },
-    { id: 12, top: '13%', left: '52.5%' },
-    { id: 13, top: '13%', left: '56%' },
-    { id: 14, top: '13%', left: '60.5%' },
-    { id: 15, top: '13%', left: '64.5%' },
-    { id: 16, top: '13%', left: '69%' },
-    { id: 17, top: '12.5%', left: '73.5%' },
-    { id: 18, top: '13%', left: '77.5%' },
-    { id: 19, top: '12.5%', left: '81.5%' },
+    { id: 1, top: '12%', left: '7%' },
+    { id: 2, top: '12%', left: '11.2%' },
+    { id: 3, top: '12%', left: '15.2%' },
+    { id: 4, top: '12%', left: '20%' },
+    { id: 5, top: '12%', left: '24%' },
+    { id: 6, top: '12%', left: '28%' },
+    { id: 7, top: '12%', left: '32.5%' },
+    { id: 8, top: '12%', left: '36%' },
+    { id: 9, top: '12%', left: '40%' },
+    { id: 10, top: '12%', left: '44%' },
+    { id: 11, top: '12%', left: '48%' },
+    { id: 12, top: '12%', left: '52.5%' },
+    { id: 13, top: '12%', left: '56%' },
+    { id: 14, top: '12%', left: '60.5%' },
+    { id: 15, top: '12%', left: '65.5%' },
+    { id: 16, top: '12%', left: '70.5%' },
+    { id: 17, top: '12%', left: '74.5%' },
+    { id: 18, top: '12%', left: '79%' },
+    { id: 19, top: '12%', left: '83%' },
 
     /* Bar 2 */
-    { id: 20, top: '39%', left: '7%' },
-    { id: 21, top: '39%', left: '11.5%' },
-    { id: 22, top: '39%', left: '16%' },
+    { id: 20, top: '39%', left: '6%' },
+    { id: 21, top: '39%', left: '10.5%' },
+    { id: 22, top: '39%', left: '15%' },
     { id: 23, top: '39%', left: '20%' },
     { id: 24, top: '39%', left: '24%' },
     { id: 25, top: '39%', left: '28%' },
-    { id: 26, top: '39%', left: '32.5%' },
+    { id: 26, top: '39%', left: '31.5%' },
     { id: 27, top: '39%', left: '36%' },
     { id: 28, top: '39%', left: '40%' },
     { id: 29, top: '39%', left: '44%' },
@@ -41,15 +41,15 @@ const ParkingInfo = ({ parkingInfoData, parkingDataCard }) => {
     { id: 31, top: '39%', left: '52.5%' },
     { id: 32, top: '39%', left: '56%' },
     { id: 33, top: '39%', left: '60.5%' },
-    { id: 34, top: '39%', left: '64.5%' },
-    { id: 35, top: '39%', left: '69%' },
-    { id: 36, top: '39%', left: '73.5%' },
-    { id: 37, top: '39%', left: '78%' },
-    { id: 38, top: '39%', left: '82%' },
+    { id: 34, top: '39%', left: '65.5%' },
+    { id: 35, top: '39%', left: '70%' },
+    { id: 36, top: '39%', left: '74.5%' },
+    { id: 37, top: '39%', left: '79%' },
+    { id: 38, top: '39%', left: '83%' },
 
     /* Bar 3 */
-    { id: 39, top: '54%', left: '7.5%' },
-    { id: 40, top: '54%', left: '11.5%' },
+    { id: 39, top: '54%', left: '6.5%' },
+    { id: 40, top: '54%', left: '11%' },
     { id: 41, top: '54%', left: '15.5%' },
     { id: 42, top: '54%', left: '20%' },
     { id: 43, top: '54%', left: '24%' },
@@ -64,9 +64,9 @@ const ParkingInfo = ({ parkingInfoData, parkingDataCard }) => {
     { id: 52, top: '54%', left: '60.5%' },
     { id: 53, top: '54%', left: '65.5%' },
     { id: 54, top: '54%', left: '70%' },
-    { id: 55, top: '54%', left: '74%' },
-    { id: 56, top: '54%', left: '78.5%' },
-    { id: 57, top: '54%', left: '82.5%' },
+    { id: 55, top: '54%', left: '75.5%' },
+    { id: 56, top: '54%', left: '79.5%' },
+    { id: 57, top: '54%', left: '83.5%' },
 
     /* Bar 4 */
     { id: 58, top: '77%', left: '6.5%' },
@@ -117,7 +117,7 @@ const ParkingInfo = ({ parkingInfoData, parkingDataCard }) => {
             (slot.id >= 20 && slot.id <= 38) || (slot.id >= 58 && slot.id <= 76);
 
           // Jika posisi ditemukan dan status bukan 0, render gambar
-          return position && slot.status !== 0 ? (
+          return position && slot.status !== 0? (
             <img
               key={slot.id}
               src={carImage}
