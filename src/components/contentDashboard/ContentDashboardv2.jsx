@@ -169,7 +169,7 @@ const handleShowDataReport = async () => {
       const data = response.data || {}; // Hindari undefined/null
       setDataCronTimes(data);
     } catch (error) {
-      console.error(error);
+      console.error(error); 
       setDataCronTimes({});
     }
   };

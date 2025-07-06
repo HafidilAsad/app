@@ -32,7 +32,7 @@ const ChartKwh2 = () => {
               // month: 'short',
               day: 'numeric',
             }),
-            kWh: parseFloat((currentKwh - previousKwh).toFixed(1)),
+            kWh: parseFloat((currentKwh - previousKwh).toFixed(1)) / 1000, // konversi ke kWh
           };
         }).filter(Boolean); // hilangkan null
           
