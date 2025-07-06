@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import HeaderLayout from '../../components/header/headerLayout2';
-import ChartTemperature from '../../components/contentDashboard/ChartTemperature';
-import ChartKwh2 from '../../components/contentDashboard/ChartKwh2';
 import axios from 'axios';
 import GaugeChart from 'react-gauge-chart';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList } from 'recharts';
 
 const Dashboardv4 = () => {
   const [dataEnergy, setDataEnergy] = React.useState([]);
   const [dataEnergyTotal, setDataEnergyTotal] = React.useState([]);  
+  const [dataHistory, setDataHistory] = React.useState([]);
 
   const fetchDataEnergy = async () => {
     try {
@@ -19,12 +19,26 @@ const Dashboardv4 = () => {
     }
   };
 
+  const fetchDataHistory = async () => {
+    try {
+      const response = await axios.get('https://blok21no12.my.id/energymonitoring/history');
+      setDataHistory(response.data.history);
+    } catch (error) {
+      console.error('Error fetching energy data:', error);
+    }
+  };
+
   useEffect(() => {
     fetchDataEnergy();
+    fetchDataHistory();
     const interval = setInterval(fetchDataEnergy, 5000);
-    return () => clearInterval(interval);
+    const intervalHistory = setInterval(fetchDataHistory, 60 * 60 * 1000);
+    return () => {
+      clearInterval(interval);
+      clearInterval(intervalHistory);
+    };
   }, []);
-  
+
 
   const MeterCard = ({  valueKwh, idGaugeChart , vr, vs, vt , ir, is, it, bill}) => (
     <div className="col-lg-2 col-md-4 col-sm-6 my-2 text-white ">
@@ -104,19 +118,61 @@ const Dashboardv4 = () => {
         <div className="col">
           <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d"}}>
             <div className="card-body p-2 text-white text-center">
-              Total Kwh  : <span className="fw-bold">{dataEnergyTotal.total_kwh.toLocaleString()} </span>
+              Total Kwh  : <span className="fw-bold">{(dataEnergyTotal.total_kwh || 0).toLocaleString()} </span>
             </div>
           </div>
         </div>
         <div className="col">
-           <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d"}}>
+          <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d"}}>
             <div className="card-body p-2 text-white text-center">
-              Total Billing  : <span className="fw-bold">{dataEnergyTotal.total_bill.toLocaleString()}</span>
+              Total Billing  : <span className="fw-bold">{(dataEnergyTotal.total_bill || 0).toLocaleString()}</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    
+      <div className="row my-2">
+          <div className="col">
+            <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
+              <div className="card-body">
+                <h5 className="text-white text-center mb-3">kWh History</h5>
+                <ResponsiveContainer width="100%" height={250}>
+                  <BarChart data={dataHistory}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" stroke="#fff" />
+                    <YAxis stroke="#fff" />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="kwh" fill="#5BE12C">
+                      <LabelList dataKey="kwh" position="top" fill="#fff" />
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
+              <div className="card-body">
+                <h5 className="text-white text-center mb-3">Efficiency</h5>
+                <ResponsiveContainer width="100%" height={250}>
+                  <BarChart data={dataHistory}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" stroke="#fff" />
+                    <YAxis stroke="#fff" />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="eff" fill="#5BE12C">
+                      <LabelList dataKey="eff" position="top" fill="#fff" />
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+      </div>
+      </div>
+
   );
 };
 
