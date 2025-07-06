@@ -21,6 +21,8 @@ const Dashboardv4 = () => {
 
   useEffect(() => {
     fetchDataEnergy();
+    const interval = setInterval(fetchDataEnergy, 5000);
+    return () => clearInterval(interval);
   }, []);
   
 
@@ -102,14 +104,14 @@ const Dashboardv4 = () => {
         <div className="col">
           <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d"}}>
             <div className="card-body p-2 text-white text-center">
-              Total Kwh  : <span className="fw-bold">{dataEnergyTotal.total_kwh} </span>
+              Total Kwh  : <span className="fw-bold">{dataEnergyTotal.total_kwh.toLocaleString()} </span>
             </div>
           </div>
         </div>
         <div className="col">
            <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d"}}>
             <div className="card-body p-2 text-white text-center">
-              Total Billing  : <span className="fw-bold">{dataEnergyTotal.total_bill}</span>
+              Total Billing  : <span className="fw-bold">{dataEnergyTotal.total_bill.toLocaleString()}</span>
             </div>
           </div>
         </div>
