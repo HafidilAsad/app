@@ -23,7 +23,7 @@ const DashboardV3 = () => { // Ubah nama fungsi menjadi DashboardV3
 
     setInterval(() => {
       fetchDataParkingInfo();
-    },5 * 1000); // Fetch data every 5 seconds
+    },3 * 1000); // Fetch data every 5 seconds
   }, []);
 
 
