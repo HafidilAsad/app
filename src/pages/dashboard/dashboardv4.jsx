@@ -8,6 +8,15 @@ const Dashboardv4 = () => {
   const [dataEnergy, setDataEnergy] = React.useState([]);
   const [dataEnergyTotal, setDataEnergyTotal] = React.useState([]);  
   const [dataHistory, setDataHistory] = React.useState([]);
+  const [startDate, setStartDate] = React.useState('');
+  const [endDate, setEndDate] = React.useState('');
+
+  const formatDate = (dateStr) => {
+    const dateObj = new Date(dateStr);
+    const day = dateObj.getDate().toString().padStart(2, '0');
+    const month = dateObj.toLocaleString('default', { month: 'short' });
+    return `${day} ${month}`;
+  };
 
   const fetchDataEnergy = async () => {
     try {
@@ -22,11 +31,26 @@ const Dashboardv4 = () => {
   const fetchDataHistory = async () => {
     try {
       const response = await axios.get('https://blok21no12.my.id/energymonitoring/history');
-      setDataHistory(response.data.history);
+      // Format date
+      const formatted = response.data.history.map(item => ({
+        ...item,
+        date: formatDate(item.date)
+      }));
+      setDataHistory(formatted);
     } catch (error) {
       console.error('Error fetching energy data:', error);
     }
   };
+
+  const filteredHistory = dataHistory.filter(item => {
+    if (!startDate && !endDate) return true;
+    const itemDate = new Date(item.date + ' 2025'); // tambahkan tahun agar bisa dibandingkan
+    const start = startDate ? new Date(startDate) : null;
+    const end = endDate ? new Date(endDate) : null;
+    if (start && itemDate < start) return false;
+    if (end && itemDate > end) return false;
+    return true;
+  });
 
   useEffect(() => {
     fetchDataEnergy();
@@ -50,7 +74,7 @@ const Dashboardv4 = () => {
               id={idGaugeChart}
               colors={["#5BE12C", "#F5CD19", "#EA4228"]}
               nrOfLevels={5}
-              percent={valueKwh / 100}
+              percent={valueKwh / 1000}
               arcWidth={0.35}
               animate={false}
               hideText={true}
@@ -96,20 +120,40 @@ const Dashboardv4 = () => {
         bgHeader="#1a1e27"
         colorTitle="#ffffff"
       />
+      <div className="d-flex justify-content-end">
+        <div className="aliggn-right text-white">
+          Start Date : 
+           <input
+            type="date"
+            value={startDate}
+            onChange={e => setStartDate(e.target.value)}
+            className='m-1'
+            placeholder="Start Date"
+          />
+          End Date :
+          <input
+            type="date"
+            value={endDate}
+            onChange={e => setEndDate(e.target.value)}
+            className='m-1'
+            placeholder="End Date"
+          />
+        </div>
+      </div>
        <div className="row my-2">
           <div className="col">
             <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
               <div className="card-body">
                 <h5 className="text-white text-center mb-3">kWh History</h5>
                 <ResponsiveContainer width="100%" height={200}>
-                  <BarChart data={dataHistory}>
+                  <BarChart data={filteredHistory}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="date" stroke="#fff" />
                     <YAxis stroke="#fff" />
                     <Tooltip />
                     <Legend />
                     <Bar dataKey="kwh" fill="#5BE12C">
-                      <LabelList dataKey="kwh" position="top" fill="#fff" />
+                      <LabelList dataKey="kwh" position="insideTop" fill="#010101" />
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
@@ -120,18 +164,34 @@ const Dashboardv4 = () => {
             <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
               <div className="card-body">
                 <h5 className="text-white text-center mb-3">Efficiency</h5>
-                <ResponsiveContainer width="100%" height={200}>
-                  <BarChart data={dataHistory}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" stroke="#fff" />
-                    <YAxis stroke="#fff" />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="eff" fill="#5BE12C">
-                      <LabelList dataKey="eff" position="top" fill="#fff" />
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
+                  <ResponsiveContainer width="100%" height={200}>
+                    <BarChart data={filteredHistory}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="date" stroke="#fff" />
+                      <YAxis stroke="#fff" />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="eff" fill="#5BE12C">
+                        <LabelList
+                          dataKey="eff"
+                          position="center"
+                          content={({ x, y, value, width }) => (
+                            <text
+                              x={x + width / 2}
+                              y={y}
+                              textAnchor="middle"
+                              fontWeight={value < 0 ? 'bold' : 'normal'}
+                              fill={value < 0 ? 'red' : '#fff'}
+                              fontSize={14}
+                              dy={-4}
+                            >
+                              {value}
+                            </text>
+                          )}
+                        />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
               </div>
             </div>
           </div>
