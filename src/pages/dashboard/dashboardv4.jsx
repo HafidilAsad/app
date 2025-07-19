@@ -20,7 +20,7 @@ const Dashboardv4 = () => {
 
   const fetchDataEnergy = async () => {
     try {
-      const response = await axios.get('https://blok21no12.my.id/energymonitoring/data');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL_ENERGY}/data`);
       setDataEnergy(response.data.data);
       setDataEnergyTotal(response.data);
     } catch (error) {
@@ -30,7 +30,7 @@ const Dashboardv4 = () => {
 
   const fetchDataHistory = async () => {
     try {
-      const response = await axios.get('https://blok21no12.my.id/energymonitoring/history');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL_ENERGY}/history`);
       // Format date
       const formatted = response.data.history.map(item => ({
         ...item,
@@ -65,10 +65,10 @@ const Dashboardv4 = () => {
 
 
   const MeterCard = ({  valueKwh, idGaugeChart , vr, vs, vt , ir, is, it, bill}) => (
-    <div className="col-lg-2 col-md-4 col-sm-6 my-2 text-white ">
+    <div className="col-2  my-2 text-white ">
       <div className="card m-1"  style={{ borderRadius: "10px", background: "#010501" , border: "2px solid #68696d"}}>
         <div className="card-body">
-          <p className= "text-white text-center">Panel :  <span className='fw-bold'>SDP-{idGaugeChart}</span></p>
+          <p className= "text-white text-center">Panel :  <span className='fw-bold'>{idGaugeChart}</span></p>
           <div >
             <GaugeChart
               id={idGaugeChart}
@@ -114,13 +114,47 @@ const Dashboardv4 = () => {
   );
 
   return (
-    <div style={{ backgroundColor: '#010101' , maxWidth: '100vw', minWidth: '100vw', minHeight: '100vh', overflowY: 'auto' }}>
+    <div style={{ backgroundColor: '#010101' , maxWidth: '100vw', minWidth: '1024px', minHeight: '100vh', overflowX: 'auto' }}>
       <HeaderLayout
         judulHeader="ENERGY MONITORING DASHBOARD"
         bgHeader="#1a1e27"
         colorTitle="#ffffff"
       />
-      <div className="d-flex justify-content-end">
+      <div className="row my-2">
+        {dataEnergy.map((dataEnergy) => (
+          <MeterCard
+            key={dataEnergy.id}
+            title={dataEnergy.panel}
+            valueKwh={dataEnergy.kwh}
+            idGaugeChart={dataEnergy.panel}
+            vr={dataEnergy.v_r}
+            vs={dataEnergy.v_s}
+            vt={dataEnergy.v_t}
+            ir={dataEnergy.i_r}
+            is={dataEnergy.i_s}
+            it={dataEnergy.i_t}
+            bill={dataEnergy.bill}
+
+          />
+        ))}
+      </div>
+      <div className="row my-2 ">
+        <div className="col">
+          <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d"}}>
+            <div className="card-body p-2 text-white text-center">
+              Total Kwh  : <span className="fw-bold">{(dataEnergyTotal.total_kwh || 0).toLocaleString()} </span>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d"}}>
+            <div className="card-body p-2 text-white text-center">
+              Total Billing  : <span className="fw-bold">{(dataEnergyTotal.total_bill || 0).toLocaleString()}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div className="d-flex justify-content-end">
         <div className="aliggn-right text-white">
           Start Date : 
            <input
@@ -196,41 +230,7 @@ const Dashboardv4 = () => {
             </div>
           </div>
       </div>
-      <div className="row my-2">
-        {dataEnergy.map((dataEnergy) => (
-          <MeterCard
-            key={dataEnergy.id}
-            title={dataEnergy.panel}
-            valueKwh={dataEnergy.kwh}
-            idGaugeChart={dataEnergy.id}
-            vr={dataEnergy.v_r}
-            vs={dataEnergy.v_s}
-            vt={dataEnergy.v_t}
-            ir={dataEnergy.i_r}
-            is={dataEnergy.i_s}
-            it={dataEnergy.i_t}
-            bill={dataEnergy.bill}
-
-          />
-        ))}
-      </div>
-      <div className="row my-2 ">
-        <div className="col">
-          <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d"}}>
-            <div className="card-body p-2 text-white text-center">
-              Total Kwh  : <span className="fw-bold">{(dataEnergyTotal.total_kwh || 0).toLocaleString()} </span>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d"}}>
-            <div className="card-body p-2 text-white text-center">
-              Total Billing  : <span className="fw-bold">{(dataEnergyTotal.total_bill || 0).toLocaleString()}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
+    </div>
 
   );
 };
