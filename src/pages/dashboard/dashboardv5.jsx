@@ -193,7 +193,7 @@ useEffect(() => {
       </div>
       <div className="row">
         <div className="col-12 text-center">
-          <img src={smartFarming} alt="Smart Farming" className="img-fluid" style={{ maxWidth: '100%', height: 'auto' }} />
+          <img src={smartFarming} alt="Smart Farming" className="" style={{ maxWidth: '70%', height: 'auto' }} />
         </div>
       </div>
        <div className="row my-2">
@@ -204,7 +204,7 @@ useEffect(() => {
                 <ResponsiveContainer width="100%" height={200}>
                   <BarChart data={dataHumidity}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" stroke="#fff" />
+                    <XAxis dataKey="name" stroke="#fff" />
                     <YAxis stroke="#fff" />
                     <Tooltip />
                     <Legend />
@@ -223,7 +223,7 @@ useEffect(() => {
                 <ResponsiveContainer width="100%" height={200}>
                   <BarChart data={dataHumidity}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" stroke="#fff" />
+                    <XAxis dataKey="name" stroke="#fff" />
                     <YAxis stroke="#fff" />
                     <Tooltip />
                     <Legend />
