@@ -13,6 +13,7 @@ import {
   faFlask, // fallback
 } from '@fortawesome/free-solid-svg-icons';
 import smartFarming from '../../assets/smartFarming.webp';
+import { Helmet } from "react-helmet";
 
 const Dashboardv5 = () => {
   const [dataEnergy, setDataEnergy] = React.useState([]);
@@ -181,6 +182,21 @@ useEffect(() => {
 
   return (
     <div style={{ backgroundColor: '#010101' , maxWidth: '100vw', minWidth: '1024px', minHeight: '100vh', overflowX: 'auto' }}>
+      <Helmet>
+        <title>Smart Farming Dashboard | Solusi Dari Programmer</title>
+        <meta name="description" content="Pantau data smart farming seperti suhu, kelembapan, pH, intensitas cahaya, dan lainnya secara real-time dengan dashboard interaktif." />
+        <meta name="keywords" content="smart farming, dashboard, suhu, kelembapan, pH, IoT, solusi programmer" />
+        <meta property="og:title" content="Smart Farming Dashboard | Solusi Dari Programmer" />
+        <meta property="og:description" content="Pantau data smart farming seperti suhu, kelembapan, pH, intensitas cahaya, dan lainnya secara real-time dengan dashboard interaktif." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://demo1.solusiprogrammer.com/v5/dashboard" />
+        <meta property="og:url" content="https://demo1.solusiprogrammer.com/v5/dashboard" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Smart Farming Dashboard | Solusi Dari Programmer" />
+        <meta name="twitter:description" content="Pantau data smart farming seperti suhu, kelembapan, pH, intensitas cahaya, dan lainnya secara real-time dengan dashboard interaktif." />
+        <meta name="twitter:image" content="https://demo1.solusiprogrammer.com/v5/dashboard" />
+        <link rel="canonical" href="https://demo1.solusiprogrammer.com/v5/dashboard" />
+      </Helmet>
       <HeaderLayout
         judulHeader="SMART FARMING DASHBOARD"
         bgHeader="#1a1e27"
@@ -197,7 +213,7 @@ useEffect(() => {
         </div>
       </div>
        <div className="row my-2">
-          <div className="col">
+          <div className="col-6">
             <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
               <div className="card-body">
                 <h5 className="text-white text-center mb-3">Humidity History (%)</h5>
@@ -216,7 +232,7 @@ useEffect(() => {
               </div>
             </div>
           </div>
-          <div className="col">
+          <div className="col-6">
             <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
               <div className="card-body">
                 <h5 className="text-white text-center mb-3">Temperature History (°C)</h5>

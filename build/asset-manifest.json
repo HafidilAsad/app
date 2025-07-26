@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.e8795d30.css",
-    "main.js": "/static/js/main.0f21f6cc.js",
+    "main.js": "/static/js/main.d31c5abe.js",
     "static/js/453.68693753.chunk.js": "/static/js/453.68693753.chunk.js",
     "static/media/parking-nocar.png": "/static/media/parking-nocar.887070ff6150a91728f5.png",
     "static/media/bmw.png": "/static/media/bmw.9ee44d0bef660e4c8cc8.png",
@@ -12,14 +12,14 @@
     "static/media/notification.svg?s3g3t9": "/static/media/notification.5d0158671dd860c714c4.svg",
     "static/media/notification.eot": "/static/media/notification.3657084dc0419605a91c.eot",
     "static/media/notification.woff?s3g3t9": "/static/media/notification.c392cd33d9d9de730f9d.woff",
-    "static/media/notification.ttf?s3g3t9": "/static/media/notification.c5d9251ea82e42f75381.ttf",
     "index.html": "/index.html",
+    "static/media/notification.ttf?s3g3t9": "/static/media/notification.c5d9251ea82e42f75381.ttf",
     "main.e8795d30.css.map": "/static/css/main.e8795d30.css.map",
-    "main.0f21f6cc.js.map": "/static/js/main.0f21f6cc.js.map",
+    "main.d31c5abe.js.map": "/static/js/main.d31c5abe.js.map",
     "453.68693753.chunk.js.map": "/static/js/453.68693753.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e8795d30.css",
-    "static/js/main.0f21f6cc.js"
+    "static/js/main.d31c5abe.js"
   ]
 }

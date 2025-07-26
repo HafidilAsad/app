@@ -3,6 +3,7 @@ import HeaderLayout from '../../components/header/headerLayout2';
 import axios from 'axios';
 import GaugeChart from 'react-gauge-chart';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList } from 'recharts';
+import { Helmet } from "react-helmet";
 
 const Dashboardv4 = () => {
   const [dataEnergy, setDataEnergy] = React.useState([]);
@@ -115,6 +116,21 @@ const Dashboardv4 = () => {
 
   return (
     <div style={{ backgroundColor: '#010101' , maxWidth: '100vw', minWidth: '1024px', minHeight: '100vh', overflowX: 'auto' }}>
+      <Helmet>
+        <title>Energy Monitoring Dashboard | Solusi Dari Programmer</title>
+        <meta name="description" content="Pantau konsumsi energi, efisiensi, dan data panel listrik secara real-time dengan dashboard interaktif." />
+        <meta name="keywords" content="dashboard energi, monitoring, listrik, efisiensi, solusi programmer" />
+        <meta property="og:title" content="Energy Monitoring Dashboard | Solusi Dari Programmer" />
+        <meta property="og:description" content="Pantau konsumsi energi, efisiensi, dan data panel listrik secara real-time dengan dashboard interaktif , Solusi Dari Programmer, Solusi Programmer, Solusi Programmer Indonesia, building management system, smart building, smart home, smart city, smart grid, energy management system, ems, energy monitoring system, ems, energy efficiency, energy conservation, energy management software" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://demo1.solusiprogrammer.com/logo192.png" />
+        <meta property="og:url" content="https://demo1.solusiprogrammer.com/v4/dashboard" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Energy Monitoring Dashboard | Solusi Dari Programmer" />
+        <meta name="twitter:description" content="Pantau konsumsi energi, efisiensi, dan data panel listrik secara real-time dengan dashboard interaktif." />
+        <meta name="twitter:image" content="https://demo1.solusiprogrammer.com/logo192.png" />
+        <link rel="canonical" href="https://demo1.solusiprogrammer.com/v4/dashboard" />
+      </Helmet>
       <HeaderLayout
         judulHeader="ENERGY MONITORING DASHBOARD"
         bgHeader="#1a1e27"

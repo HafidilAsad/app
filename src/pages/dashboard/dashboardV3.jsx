@@ -3,6 +3,7 @@ import axios from 'axios';
 import HeaderLayout from '../../components/header/header';
 import ParkingInfo from '../../components/contentDashboard/ParkingInfo';
 import ParkingDataCards from '../../components/contentDashboard/ParkingDataCard';
+import { Helmet } from "react-helmet";
 
 const DashboardV3 = () => { // Ubah nama fungsi menjadi DashboardV3
   const [parkingInfoData, setParkingInfoData] = useState([]);
@@ -67,7 +68,23 @@ const DashboardV3 = () => { // Ubah nama fungsi menjadi DashboardV3
       overflowX: 'auto', 
     }}
   >
+       <Helmet>
+        <title>Smart Parking Zone | Solusi Dari Programmer</title>
+        <meta name="description" content="Pantau status slot parkir, ruang kosong, dan data parkir secara real-time di Smart Parking Zone Dashboard." />
+        <meta name="keywords" content="dashboard parkir, smart parking, monitoring parkir, solusi programmer, iot, visualisasi, smart home, smart city, smart grid, energy management system, ems, energy monitoring system, ems, energy efficiency, energy conservation, energy management software, building automation system, building management system, bas, smart building" />" 
+        <meta property="og:title" content="Smart Parking Zone | Solusi Dari Programmer" />
+        <meta property="og:description" content="Pantau status slot parkir, ruang kosong, dan data parkir secara real-time di Smart Parking Zone Dashboard." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://demo1.solusiprogrammer.com/logo192.png" />
+        <meta property="og:url" content="https://demo1.solusiprogrammer.com/v3/dashboard" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Smart Parking Zone | Solusi Dari Programmer" />
+        <meta name="twitter:description" content="Pantau status slot parkir, ruang kosong, dan data parkir secara real-time di Smart Parking Zone Dashboard." />
+        <meta name="twitter:image" content="https://demo1.solusiprogrammer.com/logo192.png" />
+        <link rel="canonical" href="https://demo1.solusiprogrammer.com/v3/dashboard" />
+      </Helmet>
     <HeaderLayout judulHeader={'Smart Parking Zone'} />
+
     <div className="container-fluid p-4">
       <div className="row">
         <ParkingInfo parkingInfoData={parkingInfoData}  parkingDataCard={parkingDataCard} />
