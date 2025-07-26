@@ -1,12 +1,13 @@
 {
   "files": {
     "main.css": "/static/css/main.e8795d30.css",
-    "main.js": "/static/js/main.30567082.js",
+    "main.js": "/static/js/main.de364795.js",
     "static/js/453.68693753.chunk.js": "/static/js/453.68693753.chunk.js",
     "static/media/parking-nocar.png": "/static/media/parking-nocar.887070ff6150a91728f5.png",
     "static/media/bmw.png": "/static/media/bmw.9ee44d0bef660e4c8cc8.png",
     "static/media/city.png": "/static/media/city.bd0e5de5d55030c94555.png",
     "static/media/Logo-SDP.png": "/static/media/Logo-SDP.cb024e9ad5c854e4661a.png",
+    "static/media/smartFarming.webp": "/static/media/smartFarming.6beb10d66f4c52c3b0c8.webp",
     "static/media/S7.jpg": "/static/media/S7.3b255a2197b61f86acb5.jpg",
     "static/media/notification.svg?s3g3t9": "/static/media/notification.5d0158671dd860c714c4.svg",
     "static/media/notification.eot": "/static/media/notification.3657084dc0419605a91c.eot",
@@ -14,11 +15,11 @@
     "static/media/notification.ttf?s3g3t9": "/static/media/notification.c5d9251ea82e42f75381.ttf",
     "index.html": "/index.html",
     "main.e8795d30.css.map": "/static/css/main.e8795d30.css.map",
-    "main.30567082.js.map": "/static/js/main.30567082.js.map",
+    "main.de364795.js.map": "/static/js/main.de364795.js.map",
     "453.68693753.chunk.js.map": "/static/js/453.68693753.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e8795d30.css",
-    "static/js/main.30567082.js"
+    "static/js/main.de364795.js"
   ]
 }

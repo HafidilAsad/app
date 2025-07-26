@@ -8,6 +8,7 @@ import Login from "./pages/login/login";
 import Dashboardv2 from "./pages/dashboard/dashboardv2";
 import DashboardV3 from "./pages/dashboard/dashboardV3";
 import DashboardV4 from "./pages/dashboard/dashboardv4";
+import DashboardV5 from "./pages/dashboard/dashboardv5";
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           <Route path="/v2/dashboard" element={<Dashboardv2 />} />
           <Route path="/v3/dashboard" element={<DashboardV3 />} />
           <Route path="/v4/dashboard" element={<DashboardV4 />} />
+          <Route path="/v5/dashboard" element={<DashboardV5 />} />
+
 
           <Route path="/" element={<Login />} /> 
         </Routes>
