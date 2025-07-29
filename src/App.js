@@ -9,6 +9,7 @@ import Dashboardv2 from "./pages/dashboard/dashboardv2";
 import DashboardV3 from "./pages/dashboard/dashboardV3";
 import DashboardV4 from "./pages/dashboard/dashboardv4";
 import DashboardV5 from "./pages/dashboard/dashboardv5";
+import NotFound from "./pages/notFound/index.jsx";
 
 
 function App() {
@@ -21,9 +22,8 @@ function App() {
           <Route path="/v3/dashboard" element={<DashboardV3 />} />
           <Route path="/v4/dashboard" element={<DashboardV4 />} />
           <Route path="/v5/dashboard" element={<DashboardV5 />} />
-
-
           <Route path="/" element={<Login />} /> 
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

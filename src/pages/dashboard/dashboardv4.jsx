@@ -191,7 +191,7 @@ const Dashboardv4 = () => {
         </div>
       </div>
        <div className="row my-2">
-          <div className="col">
+          <div className="col-6">
             <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
               <div className="card-body">
                 <h5 className="text-white text-center mb-3">kWh History</h5>
@@ -210,7 +210,7 @@ const Dashboardv4 = () => {
               </div>
             </div>
           </div>
-          <div className="col">
+          <div className="col-6">
             <div className="card" style={{ borderRadius: "10px", background: "#010101", border: "2px solid #68696d" }}>
               <div className="card-body">
                 <h5 className="text-white text-center mb-3">Efficiency</h5>

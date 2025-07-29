@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Sitemap: https://demo1.solusiprogrammer.com/sitemap.xml
